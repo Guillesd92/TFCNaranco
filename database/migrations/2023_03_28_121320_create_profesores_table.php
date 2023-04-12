@@ -14,14 +14,14 @@ class CreateProfesoresTable extends Migration
     public function up()
     {
         Schema::create('profesores', function (Blueprint $table) {
-            $table->bigIncrements('Id_Profesor');
+            $table->bigIncrements('Id_Profesor')->autoIncrement();
             $table->string('Nombre');
             $table->string('Apellidos');
             $table->string('Email')->unique();
             $table->string('Password');
-            $table->unsignedBigInteger('Id_Estudio');
+            $table->unsignedBigInteger('Id_Estudio')->nullable();
             $table->foreign('Id_Estudio')->references('Id_Estudio')->on('estudios');
-            $table->unsignedBigInteger('Id_Grupo');
+            $table->unsignedBigInteger('Id_Grupo')->nullable();
             $table->foreign('Id_Grupo')->references('Id_Grupo')->on('grupo');
             $table->timestamps();
         });

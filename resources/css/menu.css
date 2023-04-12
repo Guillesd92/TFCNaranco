@@ -1,0 +1,12 @@
+
+
+
+@media (max-width: 960px) { 
+    .button-sm {
+      padding-bottom: 30px; 
+    }
+
+    .contenedor{
+        height: 50em;
+    }
+  }

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\RoutesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,17 +18,19 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Welcome');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+Route::get('/home', [RoutesController::class, 'home'])->name('home');
+Route::get('/usuarios', [RoutesController::class, 'usuarios'])->name('usuarios');
+Route::get('/grupos', [RoutesController::class, 'grupos'])->name('grupos');
+Route::get('/estudios', [RoutesController::class, 'estudios'])->name('estudios');
+Route::get('/alumnos', [RoutesController::class, 'alumnos'])->name('alumnos');
+Route::get('/inicio', [RoutesController::class, 'inicio'])->name('inicio');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
