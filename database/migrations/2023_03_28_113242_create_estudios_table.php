@@ -14,7 +14,7 @@ class CreateEstudiosTable extends Migration
     public function up()
     {
         Schema::create('estudios', function (Blueprint $table) {
-            $table->bigIncrements('Id_Estudio');
+            $table->bigIncrements('Id_Estudio')->autoIncrement();
             $table->text('Nombre');
             $table->timestamps();
         });

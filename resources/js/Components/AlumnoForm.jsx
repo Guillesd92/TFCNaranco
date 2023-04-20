@@ -2,20 +2,20 @@ import { useState, useEffect, useRef} from 'react';
 import { TextField, Button } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 
-const UserForm = () => {
+const AlumnoForm = () => {
 
   const [nombre, setNombre] = useState('');
   const [apellidos, setApellidos] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmarPassword, setConfirmarPassword] = useState('');
-  const [severiti, setSeveriti] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [localidad, setLocalidad] = useState('');
+  const [direccion, setDireccion] = useState('');
   const [alerta, setAlerta] = useState('');
   
 
   const handleSubmit =async (e) => {
     e.preventDefault();
-    if (password === confirmarPassword) {
+    
       const formData = new FormData();
       formData.append('nombre', nombre);
       formData.append('apellidos', apellidos);
@@ -29,16 +29,16 @@ const UserForm = () => {
         });
         if (response.ok) {
           setSeveriti('success');
-          setAlerta('Usuario creado corectamente');
+          setAlerta('Alumno creado corectamente');
           document.getElementById('alerta').style.display = 'block';
 
           setTimeout(() => {
             document.getElementById('alerta').style.display = 'none';
             setNombre('');
             setApellidos('');
-            setEmail('');
-            setPassword('');
-            setConfirmarPassword('');
+            setTelefono('');
+            setLocalidad('');
+            setDireccion('');
           }, 3000);
 
           
@@ -56,16 +56,6 @@ const UserForm = () => {
         console.error('Error:', error);
       }
 
-    } else {
-      setSeveriti('error');
-      setAlerta('Las contraseñas no coinciden');
-      document.getElementById('alerta').style.display = 'block';
-
-      setTimeout(() => {
-        document.getElementById('alerta').style.display = 'none';
-      }, 3000);
-
-    }
   };
 
   return (
@@ -97,18 +87,24 @@ const UserForm = () => {
       />
       <TextField
         label="Contraseña"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={telefono}
+        onChange={(e) => setTelefono(e.target.value)}
         fullWidth
         margin="normal"
         required
       />
       <TextField
-        label="Confirmar contraseña"
-        type="password"
-        value={confirmarPassword}
-        onChange={(e) => setConfirmarPassword(e.target.value)}
+        label="Localidad"
+        value={localidad}
+        onChange={(e) => setLocalidad(e.target.value)}
+        fullWidth
+        margin="normal"
+        required
+      />
+      <TextField
+        label="Direccion"
+        value={direccion}
+        onChange={(e) => setDireccion(e.target.value)}
         fullWidth
         margin="normal"
         required
@@ -120,10 +116,10 @@ const UserForm = () => {
         type="submit"
         style={{marginTop:'20px'}}
       >
-        Crear usuario
+        Crear Alumno
       </Button>
     </form>
   );
 };
 
-export default UserForm;
+export default AlumnoForm;

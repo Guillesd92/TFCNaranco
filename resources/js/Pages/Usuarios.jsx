@@ -4,6 +4,7 @@ import { Grid, Button, Table, TableHead, TableRow, TableCell, TableBody } from '
 import theme from './../Components/theme';
 import { useState, useEffect, useRef} from 'react';
 import UserForm from './../Components/UserForm';
+import { Alert } from '@material-ui/lab';
 
 const Usuarios = () => {
 
@@ -11,6 +12,7 @@ const Usuarios = () => {
     const [listButton, setListButton] = useState('contained');
     const [formButton, setFormButton] = useState('outlined');
     const [usuarios, setUsuarios] = useState([]);
+    const [alerta, setAlerta] = useState('');
 
     const fetchUsers = async () => {
         const response = await fetch('http://127.0.0.1:8000/api/profesores');
@@ -36,20 +38,20 @@ const Usuarios = () => {
       setFormButton('contained');
     };
 
-    const handleDeleteUser = async (Id_Profesor) => {
+    const handleDeleteUser = async (Id_Profesor, Email) => {
         const response = await fetch(`http://127.0.0.1:8000/api/profesores/${Id_Profesor}`, {
           method: 'DELETE',
         });
     
         const result = await response.json();
         
-        //tableRef.current.scrollIntoView();
-       // document.getElementById('alerta').style.display = 'block';
+       setAlerta('Se ha borado el usuario '+Email);
+        document.getElementById('alerta').style.display = 'block';
       
-        /*setTimeout(() => {
+        setTimeout(() => {
             document.getElementById('alerta').style.display = 'none';
-          }, 5000);*/
-    
+          }, 5000);
+          
           
         fetchUsers();
         
@@ -73,6 +75,7 @@ const Usuarios = () => {
               </Grid>
               {showList ? (
                 <Grid style={{paddingTop:'3em', paddingBottom:'3em'}}>
+                  <Alert id="alerta" severity="success" style={{display:'none', marginTop:'10px', marginBottom:'10px'}}>{alerta}</Alert>
                     <Table>
                         <TableHead>
                             <TableRow>
@@ -90,7 +93,7 @@ const Usuarios = () => {
                             <TableCell>{usuario.Email}</TableCell>
                             <TableCell> 
                                 {usuario.Id_Profesor !== 1 &&
-                                    <Button variant="contained" onClick={() => handleDeleteUser(usuario.Id_Profesor)}>Borrar</Button>
+                                    <Button variant="contained" onClick={() => handleDeleteUser(usuario.Id_Profesor, usuario.Email)}>Borrar</Button>
                                 }
                             </TableCell>
                             </TableRow>

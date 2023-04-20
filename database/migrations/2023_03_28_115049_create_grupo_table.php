@@ -12,10 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('grupo', function (Blueprint $table) {
-            $table->unsignedBigInteger('Id_Grupo')->primary();
+            $table->bigIncrements('Id_Grupo')->autoIncrement();
             $table->integer('Aula');
             $table->integer('Curso');
             $table->timestamps();
+
+            $table->unique(['Aula', 'Curso']);
         });
     }
 
