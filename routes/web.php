@@ -30,7 +30,7 @@ Route::get('/grupos', [RoutesController::class, 'grupos'])->name('grupos');
 Route::get('/estudios', [RoutesController::class, 'estudios'])->name('estudios');
 Route::get('/alumnos', [RoutesController::class, 'alumnos'])->name('alumnos');
 Route::get('/inicio', [RoutesController::class, 'inicio'])->name('inicio');
-
+Route::get('/tabla', [RoutesController::class, 'tabla'])->name('tabla');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

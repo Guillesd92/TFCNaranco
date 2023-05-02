@@ -15,6 +15,8 @@ return new class extends Migration
             $table->bigIncrements('Id_Grupo')->autoIncrement();
             $table->integer('Aula');
             $table->integer('Curso');
+            $table->unsignedBigInteger('Id_Estudio')->nullable();
+            $table->foreign('Id_Estudio')->references('Id_Estudio')->on('estudios');
             $table->timestamps();
 
             $table->unique(['Aula', 'Curso']);

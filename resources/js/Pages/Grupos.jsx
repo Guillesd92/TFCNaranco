@@ -12,6 +12,7 @@ const Grupos = () => {
     const [listButton, setListButton] = useState('contained');
     const [formButton, setFormButton] = useState('outlined');
     const [grupos, setGrupos] = useState([]);
+    const [estudios, setEstudios] = useState([]);
     const [alerta, setAlerta] = useState('');
 
     const fetchGrupos = async () => {
@@ -20,8 +21,26 @@ const Grupos = () => {
         setGrupos(data);
     };
 
+    const fetchEstudios = async () => {
+      const response = await fetch('http://127.0.0.1:8000/api/estudios');
+      const data = await response.json();
+      setEstudios(data);
+  };
+
     useEffect(() => {
         fetchGrupos();
+        fetchEstudios();
+      }, []);
+
+      useEffect(() => {
+        fetch('http://127.0.0.1:8000/api/estudios')
+          .then(response => response.json())
+          .then(data => {
+            setEstudios(data);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
       }, []);
     
 
@@ -58,6 +77,16 @@ const Grupos = () => {
       };
     
 
+      function getNombreEstudio(idEstudio) {
+        for (let i = 0; i < estudios.length; i++) {
+          if (estudios[i].Id_Estudio === idEstudio) {
+            return estudios[i].Nombre;
+          }
+        }
+        return '';
+        
+      }
+
     
     return (
         <div>
@@ -79,9 +108,10 @@ const Grupos = () => {
                     <Table>
                         <TableHead>
                             <TableRow>
+                              
                                 <TableCell>Aula</TableCell>
                                 <TableCell>Curso</TableCell>
-                                
+                                <TableCell>Estudio</TableCell>
                                 <TableCell>Accion</TableCell>
                             </TableRow>
                         </TableHead>
@@ -90,6 +120,7 @@ const Grupos = () => {
                             <TableRow key={grupo.Id_Grupo}>
                                 <TableCell>{grupo.Aula}</TableCell>
                                 <TableCell>{grupo.Curso}</TableCell>
+                                <TableCell>{getNombreEstudio(grupo.Id_Estudio)}</TableCell>
                                 <TableCell> 
                                     <Button variant="contained" onClick={() => handleDeleteGrupo(grupo.Id_Grupo)}>Borrar</Button> 
                                 </TableCell>

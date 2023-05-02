@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Grupo;
+use App\Models\Estudio;
 
 class Profesor extends Model
 {
@@ -18,14 +20,10 @@ class Profesor extends Model
         'Apellidos',
         'Email',
         'Password',
-        'Id_Estudio',
         'Id_Grupo'
     ];
 
-    public function estudio()
-    {
-        return $this->belongsTo(Estudio::class, 'Id_Estudio');
-    }
+    
 
     public function grupo()
     {

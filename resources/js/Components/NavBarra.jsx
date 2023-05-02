@@ -9,6 +9,7 @@ import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 
+
 const NavBarra = () => {
   const redirect = (route) => {
     window.location.replace(route);

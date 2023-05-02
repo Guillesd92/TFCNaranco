@@ -27,6 +27,7 @@ class GruposController extends Controller
         $grupo = new Grupo();
         $grupo->Aula = $request->input('aula');
         $grupo->Curso = $request->input('curso');
+        $grupo->Id_Estudio = $request->input('id_Estudio');
         $grupo->save();
     }
 }

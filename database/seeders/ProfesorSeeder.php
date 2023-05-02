@@ -19,7 +19,6 @@ class ProfesorSeeder extends Seeder
         $profesor->Apellidos = 'Admin';
         $profesor->Email = 'admin@admin.com';
         $profesor->Password = bcrypt('admin');
-        $profesor->Id_Estudio = null;
         $profesor->Id_Grupo = null;
         $profesor->save();
     }

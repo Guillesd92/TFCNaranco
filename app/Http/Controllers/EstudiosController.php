@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Estudio;
 use Illuminate\Http\Request;
 
-class GruposController extends Controller
+class EstudiosController extends Controller
 {
     public function index(){
         $estudios = Estudio::all();

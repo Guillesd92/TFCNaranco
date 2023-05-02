@@ -32,6 +32,11 @@ class RoutesController extends Controller
         return Inertia::render('Grupos');
     }
 
+    public function tabla()
+    {
+        return Inertia::render('Tabla');
+    }
+
     public function inicio()
     {
         return Inertia::render('Welcome');

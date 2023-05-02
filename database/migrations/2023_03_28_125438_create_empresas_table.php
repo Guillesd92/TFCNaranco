@@ -14,10 +14,11 @@ class CreateEmpresasTable extends Migration
     public function up()
     {
         Schema::create('empresas', function (Blueprint $table) {
-            $table->bigIncrements('Id_Empresa');
+            $table->string('CIF')->primary();
             $table->string('Nombre');
             $table->string('Direccion');
-            $table->integer('Num_Plazas');
+            $table->integer('Telefono');
+            $table->string('Tutor');
             $table->unsignedBigInteger('Id_Profesor');
             $table->foreign('Id_Profesor')->references('Id_Profesor')->on('profesores');
             $table->timestamps();

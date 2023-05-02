@@ -15,7 +15,7 @@ const Estudios = () => {
     const [alerta, setAlerta] = useState('');
 
     const fetchEstudios = async () => {
-        const response = await fetch('http://127.0.0.1:8000/api/estudios', { mode: 'no-cors' });
+        const response = await fetch('http://127.0.0.1:8000/api/estudios');
         const data = await response.json();
         setEstudios(data);
     };

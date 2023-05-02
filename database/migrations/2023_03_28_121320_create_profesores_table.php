@@ -19,8 +19,6 @@ class CreateProfesoresTable extends Migration
             $table->string('Apellidos');
             $table->string('Email')->unique();
             $table->string('Password');
-            $table->unsignedBigInteger('Id_Estudio')->nullable();
-            $table->foreign('Id_Estudio')->references('Id_Estudio')->on('estudios');
             $table->unsignedBigInteger('Id_Grupo')->nullable();
             $table->foreign('Id_Grupo')->references('Id_Grupo')->on('grupo');
             $table->timestamps();

@@ -11,7 +11,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   
   const [error, setError] = useState('');
-  const [isAdmin, setIsAdmin] = useState(false);
+  
 
   const handleEmailChange = (event) => {
     setEmail( event.target.value);
@@ -39,9 +39,11 @@ const LoginForm = () => {
       
       if (response.ok) {
         if (data.isAdmin) {
-          setIsAdmin(true);
+          window.location.replace(route('home'));
+        }else{
+          window.location.replace(route('tabla'));
         }
-        window.location.replace(route('home'));
+        
       } else {
         setError('Correo electrónico o contraseña incorrectos');
         document.getElementById('error').style.display = 'block';

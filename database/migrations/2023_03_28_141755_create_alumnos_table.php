@@ -23,8 +23,8 @@ class CreateAlumnosTable extends Migration
             $table->string('Direccion');
             $table->unsignedBigInteger('Id_Grupo');
             $table->foreign('Id_Grupo')->references('Id_Grupo')->on('grupo');
-            $table->unsignedBigInteger('Id_Empresa')->nullable();
-            $table->foreign('Id_Empresa')->references('Id_Empresa')->on('empresas');
+            $table->string('CIF')->nullable();
+            $table->foreign('CIF')->references('CIF')->on('empresas');
             $table->timestamps();
         });
     }

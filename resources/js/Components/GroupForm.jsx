@@ -6,9 +6,25 @@ const GroupForm = () => {
 
   const [aula, setAula] = useState('');
   const [curso, setCurso] = useState('');
+
+  const [estudio, setEstudio] = useState(''); // nuevo estado para guardar el estudio seleccionado
+  const [estudios, setEstudios] = useState([]);
   
   const [severity, setSeverity] = useState('error');
   const [alerta, setAlerta] = useState('');
+
+
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/estudios')
+      .then(response => response.json())
+      .then(data => {
+        setEstudios(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []);
   
 
   const handleSubmit =async (e) => {
@@ -17,6 +33,7 @@ const GroupForm = () => {
       const formData = new FormData();
       formData.append('aula', aula);
       formData.append('curso', curso);
+      formData.append('id_Estudio', estudio);
      
       
       try {
@@ -80,7 +97,24 @@ const GroupForm = () => {
       <MenuItem value={2}>Segundo</MenuItem>
     </Select>
   </div>
-  
+  <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
+  <InputLabel htmlFor="estudio">Estudio: </InputLabel>
+  <Select
+    id="estudio"
+    value={estudio}
+    onChange={(e) => setEstudio(e.target.value)}
+    fullWidth
+    margin="normal"
+    required
+    style={{ height: '56px', marginLeft: '10px' }}
+  >
+    {estudios.map((estudio) => (
+      <MenuItem key={estudio.Id_Estudio} value={estudio.Id_Estudio}>
+        {estudio.Nombre}
+      </MenuItem>
+    ))}
+  </Select>
+</div>
   <Alert id="alerta" severity={severity} style={{display:'none', marginTop:'10px'}}>{alerta}</Alert>
   <Button
     variant="contained"

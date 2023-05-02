@@ -69,7 +69,7 @@ const Alumnos = () => {
                 <Button variant={listButton} color="primary" onClick={handleShowList}>
                   Listar alumnos
                 </Button>
-                <Button variant={formButton} color="primary" onClick={handleCreateUser}>
+                <Button variant={formButton} color="primary" onClick={handleCreateAlumno}>
                   Crear alumnos
                 </Button>
               </Grid>
@@ -109,4 +109,4 @@ const Alumnos = () => {
     );
 }
 
-export default Usuarios;
+export default Alumnos;
