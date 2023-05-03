@@ -30,3 +30,6 @@ Route::post('/estudios', 'App\Http\Controllers\EstudiosController@store');
 Route::get('/alumnos', 'App\Http\Controllers\AlumnosController@index');
 Route::delete('/alumnos/{Id_Alumno}', 'App\Http\Controllers\AlumnosController@delete');
 Route::post('/alumnos', 'App\Http\Controllers\AlumnosController@store');
+Route::get('/empresas', 'App\Http\Controllers\EmpresasController@index');
+Route::delete('/empresas/{CIF}', 'App\Http\Controllers\EmpresasController@delete');
+Route::post('/empresas', 'App\Http\Controllers\EmpresasController@store');

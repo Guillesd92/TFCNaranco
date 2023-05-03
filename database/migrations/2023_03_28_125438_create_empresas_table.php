@@ -15,12 +15,12 @@ class CreateEmpresasTable extends Migration
     {
         Schema::create('empresas', function (Blueprint $table) {
             $table->string('CIF')->primary();
+            $table->string('Convenio')->unique();
             $table->string('Nombre');
             $table->string('Direccion');
             $table->integer('Telefono');
             $table->string('Tutor');
-            $table->unsignedBigInteger('Id_Profesor');
-            $table->foreign('Id_Profesor')->references('Id_Profesor')->on('profesores');
+            $table->string('Notas');
             $table->timestamps();
         });
     }

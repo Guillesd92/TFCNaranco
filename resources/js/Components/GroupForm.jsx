@@ -7,7 +7,7 @@ const GroupForm = () => {
   const [aula, setAula] = useState('');
   const [curso, setCurso] = useState('');
 
-  const [estudio, setEstudio] = useState(''); // nuevo estado para guardar el estudio seleccionado
+  const [estudio, setEstudio] = useState(''); 
   const [estudios, setEstudios] = useState([]);
   
   const [severity, setSeverity] = useState('error');

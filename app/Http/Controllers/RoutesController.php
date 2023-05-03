@@ -37,6 +37,11 @@ class RoutesController extends Controller
         return Inertia::render('Tabla');
     }
 
+    public function empresas()
+    {
+        return Inertia::render('Empresas');
+    }
+
     public function inicio()
     {
         return Inertia::render('Welcome');

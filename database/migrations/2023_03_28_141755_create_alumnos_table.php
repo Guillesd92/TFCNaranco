@@ -21,6 +21,7 @@ class CreateAlumnosTable extends Migration
             $table->string('Telefono');
             $table->string('Localidad');
             $table->string('Direccion');
+            $table->integer('Año');
             $table->unsignedBigInteger('Id_Grupo');
             $table->foreign('Id_Grupo')->references('Id_Grupo')->on('grupo');
             $table->string('CIF')->nullable();
