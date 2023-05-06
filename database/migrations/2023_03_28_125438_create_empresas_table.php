@@ -20,7 +20,7 @@ class CreateEmpresasTable extends Migration
             $table->string('Direccion');
             $table->integer('Telefono');
             $table->string('Tutor');
-            $table->string('Notas');
+            $table->string('Notas')->nullable();
             $table->timestamps();
         });
     }

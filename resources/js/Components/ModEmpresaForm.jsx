@@ -2,7 +2,7 @@ import { useState, useEffect, useRef} from 'react';
 import { TextField, Button, Select, MenuItem, InputLabel } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 
-const EmpresaForm = () => {
+const ModEmpresaForm = () => {
 
   const [cif, setCIF] = useState('');
   const [convenio, setConvenio] = useState('');
@@ -137,10 +137,10 @@ const EmpresaForm = () => {
     type="submit"
     style={{ marginTop: '20px' }}
   >
-    Crear empresa
+    Guardar cambios
   </Button>
 </form>
   );
 };
 
-export default EmpresaForm;
+export default ModEmpresaForm;

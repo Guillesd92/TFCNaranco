@@ -4,11 +4,14 @@ import { Grid, Button, Table, TableHead, TableRow, TableCell, TableBody } from '
 import theme from './../Components/theme';
 import { useState, useEffect, useRef} from 'react';
 import EmpresaForm from './../Components/EmpresaForm';
+import ModEmpresaForm from './../Components/ModEmpresaForm';
 import { Alert } from '@material-ui/lab';
 
 const Empresas = () => {
 
     const [showList, setShowList] = useState(true);
+    const [showMod, setShowMod] = useState(false);
+    const [selectedCIF, setSelectedCIF] = useState(null);
     const [listButton, setListButton] = useState('contained');
     const [formButton, setFormButton] = useState('outlined');
     const [empresas, setEmpresas] = useState([]);
@@ -31,11 +34,17 @@ const Empresas = () => {
       setFormButton('outlined');
       fetchEmpresas();
     };
+
+    const handleShowMod = (CIF) => {
+      setSelectedCIF(CIF);
+      setShowMod(true);
+    }
   
-    const handleCreateUser = () => {
+    const handleCreateEmpresa = () => {
       setShowList(false);
       setListButton('outlined');
       setFormButton('contained');
+      setShowMod(false);
     };
 
     const handleDeleteUser = async (CIF, Nombre) => {
@@ -69,36 +78,41 @@ const Empresas = () => {
                 <Button variant={listButton} color="primary" onClick={handleShowList}>
                   Listar empresas
                 </Button>
-                <Button variant={formButton} color="primary" onClick={handleCreateUser}>
+                <Button variant={formButton} color="primary" onClick={handleCreateEmpresa}>
                   Crear empresas
                 </Button>
               </Grid>
               {showList ? (
-                <Grid style={{paddingTop:'3em', paddingBottom:'3em'}}>
-                  <Alert id="alerta" severity="success" style={{display:'none', marginTop:'10px', marginBottom:'10px'}}>{alerta}</Alert>
+                showMod ? (
+                  <ModEmpresaForm CIF={selectedCIF} />
+                ) : (
+                  <Grid style={{paddingTop:'3em', paddingBottom:'3em'}}>
+                    <Alert id="alerta" severity="success" style={{display:'none', marginTop:'10px', marginBottom:'10px'}}>{alerta}</Alert>
                     <Table>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>CIF</TableCell>
-                                <TableCell>Convenio</TableCell>
-                                <TableCell>Nombre</TableCell>
-                                <TableCell>Accion</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>CIF</TableCell>
+                          <TableCell>Convenio</TableCell>
+                          <TableCell>Nombre</TableCell>
+                          <TableCell>Accion</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
                         {empresas.map((empresa) => (
-                            <TableRow key={empresa.CIF}>
+                          <TableRow key={empresa.CIF}>
                             <TableCell>{empresa.CIF}</TableCell>
                             <TableCell>{empresa.Convenio}</TableCell>
                             <TableCell>{empresa.Nombre}</TableCell>
                             <TableCell> 
-                                <Button variant="contained" onClick={() => handleDeleteUser(empresa.CIF, empresa.Nombre)}>Borrar</Button>
+                              <Button variant="contained" onClick={() => handleDeleteUser(empresa.CIF, empresa.Nombre)} style={{backgroundColor: '#ff4d4d', color: 'white', marginRight: '15px'}}>Borrar</Button>
+                              <Button variant="contained" onClick={() => handleShowMod(empresa.CIF)}>Modificar</Button>
                             </TableCell>
-                            </TableRow>
+                          </TableRow>
                         ))}
-                        </TableBody>
+                      </TableBody>
                     </Table>
-                </Grid>
+                  </Grid>
+                )
               ) : (
                 <EmpresaForm/>
               )}
