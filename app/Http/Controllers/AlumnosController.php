@@ -32,9 +32,20 @@ class AlumnosController extends Controller
         $alumno->Telefono = $request->input('telefono');
         $alumno->Localidad = $request->input('localidad');
         $alumno->Direccion = $request->input('direccion');
+        $alumno->Año = $request->input('anio');
         $alumno->Id_Grupo = $request->input('id_grupo');
         //$alumno->Id_Empresa = $request->input('1');
         $alumno->save();
         return response()->json(['message' => 'Estudio creado correctamente'], 201);
     }
+
+    public function asign(Request $request)
+    {
+        $alumno = Alumno::findOrFail($request->id);
+        $alumno->CIF = $request->cif;
+        $alumno->save();
+        return response()->json(['success' => true]);
+    }
+
+   
 }

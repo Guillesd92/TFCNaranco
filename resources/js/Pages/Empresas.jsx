@@ -84,7 +84,7 @@ const Empresas = () => {
               </Grid>
               {showList ? (
                 showMod ? (
-                  <ModEmpresaForm CIF={selectedCIF} />
+                  <ModEmpresaForm CIF={selectedCIF} setShowMod={setShowMod} />
                 ) : (
                   <Grid style={{paddingTop:'3em', paddingBottom:'3em'}}>
                     <Alert id="alerta" severity="success" style={{display:'none', marginTop:'10px', marginBottom:'10px'}}>{alerta}</Alert>
@@ -105,7 +105,7 @@ const Empresas = () => {
                             <TableCell>{empresa.Nombre}</TableCell>
                             <TableCell> 
                               <Button variant="contained" onClick={() => handleDeleteUser(empresa.CIF, empresa.Nombre)} style={{backgroundColor: '#ff4d4d', color: 'white', marginRight: '15px'}}>Borrar</Button>
-                              <Button variant="contained" onClick={() => handleShowMod(empresa.CIF)}>Modificar</Button>
+                              <Button variant="contained" color="primary" onClick={() => handleShowMod(empresa.CIF)}>Modificar</Button>
                             </TableCell>
                           </TableRow>
                         ))}

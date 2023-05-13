@@ -10,6 +10,7 @@ const AlumnoForm = () => {
   const [telefono, setTelefono] = useState('');
   const [localidad, setLocalidad] = useState('');
   const [direccion, setDireccion] = useState('');
+  const [anio, setAnio] = useState('');
   const [alerta, setAlerta] = useState('');
   const [severiti, setSeveriti] = useState('error');
   const [grupo, setGrupo] = useState(''); 
@@ -59,6 +60,7 @@ const AlumnoForm = () => {
       formData.append('email', email);
       formData.append('telefono', telefono);
       formData.append('localidad', localidad);
+      formData.append('anio', anio);
       formData.append('direccion', direccion);
       formData.append('id_grupo', grupo);
       try {
@@ -79,6 +81,7 @@ const AlumnoForm = () => {
             setTelefono('');
             setLocalidad('');
             setDireccion('');
+            setAnio('');
             setGrupo('');
           }, 3000);
 
@@ -143,6 +146,16 @@ const AlumnoForm = () => {
         label="Localidad"
         value={localidad}
         onChange={(e) => setLocalidad(e.target.value)}
+        fullWidth
+        margin="normal"
+        required
+        style={{ marginRight: '20px' }}
+      />
+      <TextField
+        label="Año(Curso)"
+        value={anio}
+        type='number'
+        onChange={(e) => setAnio(e.target.value)}
         fullWidth
         margin="normal"
         required

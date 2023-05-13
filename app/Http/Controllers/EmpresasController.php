@@ -34,4 +34,34 @@ class EmpresasController extends Controller
         $empresa->save();
         return response()->json(['message' => 'Empresa creada correctamente'], 201);
     }
+
+    public function find($CIF){
+
+        $empresa = Empresa::where('CIF', $CIF)->first();
+
+        if($empresa){
+            return response()->json($empresa);
+        } else {
+            return response()->json(['message' => 'Empresa no encontrada'], 404);
+        }
+    }
+
+    public function modify($CIF, Request $request){
+        $empresa = Empresa::where('CIF', $CIF)->first(); 
+        
+        if ($empresa) { 
+            $empresa->update([
+                'CIF'=> $request->input('cif'),
+                'Convenio' => $request->input('convenio'),
+                'Nombre' => $request->input('nombre'),
+                'Direccion' => $request->input('direccion'),
+                'Telefono' => $request->input('telefono'),
+                'Tutor' => $request->input('tutor')
+            ]);
+    
+            return response()->json(['message' => 'Empresa actualizada exitosamente',]);
+        } else {
+            return response()->json(['message' => 'La empresa no existe'], 404);
+        }
+    }
 }

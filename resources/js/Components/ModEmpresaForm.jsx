@@ -2,8 +2,10 @@ import { useState, useEffect, useRef} from 'react';
 import { TextField, Button, Select, MenuItem, InputLabel } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 
-const ModEmpresaForm = () => {
+const ModEmpresaForm = ({ CIF, setShowMod}) => {
 
+  const [cifActual, setCifActual] = useState(CIF);
+  const [empresa, setEmpresa] = useState([]);
   const [cif, setCIF] = useState('');
   const [convenio, setConvenio] = useState('');
   const [nombre, setNombre] = useState(''); 
@@ -14,7 +16,32 @@ const ModEmpresaForm = () => {
   const [severity, setSeverity] = useState('error');
   const [alerta, setAlerta] = useState('');
 
-  
+  const handleVolver = () => {
+    setShowMod(false);
+  };
+
+  const fetchEmpresasActual = async () => {
+    const response = await fetch(`http://127.0.0.1:8000/api/empresa/${CIF}`);
+    const data = await response.json();
+    setEmpresa(data);
+    setCIF(empresa.CIF);
+    setConvenio(empresa.Convenio)
+  };
+
+  useEffect(() => {
+    fetchEmpresasActual();
+  }, []);
+
+  useEffect(() => {
+    if (empresa) {
+      setCIF(empresa.CIF);
+      setConvenio(empresa.Convenio);
+      setNombre(empresa.Nombre);
+      setDireccion(empresa.Direccion);
+      setTelefono(empresa.Telefono);
+      setTutor(empresa.Tutor);
+    }
+  }, [empresa]);
 
   const handleSubmit =async (e) => {
     e.preventDefault();
@@ -29,13 +56,13 @@ const ModEmpresaForm = () => {
      
       
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/empresas', {
+        const response = await fetch(`http://127.0.0.1:8000/api/empresa/${CIF}`, {
           method: 'POST',
           body: formData
         });
         if (response.ok) {
           setSeverity('success');
-          setAlerta('Empresa creado corectamente');
+          setAlerta('Se ha modificado la empresa correctamente');
           document.getElementById('alerta').style.display = 'block';
 
           setTimeout(() => {
@@ -52,7 +79,7 @@ const ModEmpresaForm = () => {
 
         } else {
           setSeverity('error');
-          setAlerta('No se ha podido crear la empresa');
+          setAlerta('No se ha podido modificar la empresa');
           document.getElementById('alerta').style.display = 'block';
 
           setTimeout(() => {
@@ -131,6 +158,7 @@ const ModEmpresaForm = () => {
     />
     </div>
   <Alert id="alerta" severity={severity} style={{display:'none', marginTop:'10px'}}>{alerta}</Alert>
+  <div style={{ display: 'flex', alignItems: 'center',justifyContent:'space-evenly', marginTop: '20px' }}>
   <Button
     variant="contained"
     color="primary"
@@ -139,6 +167,15 @@ const ModEmpresaForm = () => {
   >
     Guardar cambios
   </Button>
+  <Button
+    variant="contained"
+    color="primary"
+    style={{ marginTop: '20px' }}
+    onClick={() => handleVolver()}
+  >
+    Volver
+  </Button>
+  </div>
 </form>
   );
 };
