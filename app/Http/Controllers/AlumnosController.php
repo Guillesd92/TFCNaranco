@@ -47,5 +47,17 @@ class AlumnosController extends Controller
         return response()->json(['success' => true]);
     }
 
+    public function deleteCIF(Request $request){
+        $ids = $request->input('ids');
+        $alumnos = Alumno::whereIn('Id_Alumno', $ids)->get();
+        
+        foreach($alumnos as $alumno) {
+          $alumno->CIF = null;
+          $alumno->save();
+        }
+        
+        return response()->json(['message' => 'CIF eliminado correctamente']);
+    }
+
    
 }
