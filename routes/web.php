@@ -32,6 +32,7 @@ Route::get('/alumnos', [RoutesController::class, 'alumnos'])->name('alumnos');
 Route::get('/inicio', [RoutesController::class, 'inicio'])->name('inicio');
 Route::get('/tabla', [RoutesController::class, 'tabla'])->name('tabla');
 Route::get('/empresas', [RoutesController::class, 'empresas'])->name('empresas');
+Route::get('/notas', [RoutesController::class, 'notas'])->name('notas');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

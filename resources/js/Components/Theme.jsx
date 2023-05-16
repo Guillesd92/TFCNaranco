@@ -4,7 +4,7 @@ const theme= createTheme({
     palette:{
       azulOscuro:{ color:"#0084ff"},
       azul:{ color:"#00b5ff"},
-      azulClaro:{ color:"#00ecff"},
+      azulClaro:{ color:"#00ecff"}, //00ecff
       celeste:{ color:"#b8ffff"},
       blanco:{ color:"#ffffff"},
     },

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef} from 'react';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, Select, MenuItem, InputLabel } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 
 const UserForm = () => {
@@ -9,8 +9,49 @@ const UserForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmarPassword, setConfirmarPassword] = useState('');
+  const [grupo, setGrupo] = useState(''); 
+  const [grupos, setGrupos] = useState([]);
+  const [estudio, setEstudio] = useState(''); 
+  const [estudios, setEstudios] = useState([]);
   const [severiti, setSeveriti] = useState('');
   const [alerta, setAlerta] = useState('');
+
+
+  useEffect(() => {
+    fetchGrupos();
+    fetchEstudios();
+  }, []);
+
+  const fetchGrupos = async() => {
+    fetch('http://127.0.0.1:8000/api/grupos')
+      .then(response => response.json())
+      .then(data => {
+        setGrupos(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+   
+  }
+
+  const fetchEstudios = async() =>{
+    fetch('http://127.0.0.1:8000/api/estudios')
+    .then(response => response.json())
+    .then(data => {
+      setEstudios(data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+  });
+   
+  }
+
+  
+
+  const devolverEstudio = (id_estudio) => {
+    const estudio = estudios.find((estudio) => estudio.Id_Estudio === id_estudio);
+    return estudio ? estudio.Nombre : '';
+  };
   
 
   const handleSubmit =async (e) => {
@@ -21,6 +62,7 @@ const UserForm = () => {
       formData.append('apellidos', apellidos);
       formData.append('email', email);
       formData.append('password', password);
+      formData.append('grupo', grupo);
       
       try {
         const response = await fetch('http://127.0.0.1:8000/api/profesores', {
@@ -39,6 +81,7 @@ const UserForm = () => {
             setEmail('');
             setPassword('');
             setConfirmarPassword('');
+            setGrupo('');
           }, 3000);
 
           
@@ -70,7 +113,7 @@ const UserForm = () => {
 
   return (
     <form onSubmit={handleSubmit} >
-      
+      <div style={{ display: 'flex', alignItems: 'center' }}>
       <TextField 
         label="Nombre"
         value={nombre}
@@ -78,6 +121,7 @@ const UserForm = () => {
         fullWidth
         margin="normal"
         required
+        style={{ marginRight: '20px' }}
       />
       <TextField
         label="Apellidos"
@@ -87,6 +131,7 @@ const UserForm = () => {
         margin="normal"
         required
       />
+      </div>
       <TextField
         label="Email"
         value={email}
@@ -95,6 +140,7 @@ const UserForm = () => {
         margin="normal"
         required
       />
+      <div style={{ display: 'flex', alignItems: 'center' }}>
       <TextField
         label="Contraseña"
         type="password"
@@ -103,6 +149,7 @@ const UserForm = () => {
         fullWidth
         margin="normal"
         required
+        style={{ marginRight: '20px' }}
       />
       <TextField
         label="Confirmar contraseña"
@@ -113,6 +160,25 @@ const UserForm = () => {
         margin="normal"
         required
       />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
+        <InputLabel htmlFor="grupo">Grupo: </InputLabel>
+        <Select
+          id="grupo"
+          value={grupo}
+          onChange={(e) => setGrupo(e.target.value)}
+          fullWidth
+          margin="normal"
+          required
+          style={{ height: '56px', marginLeft: '10px' }}
+        >
+          {grupos.map((grupo) => (
+            <MenuItem key={grupo.Id_Grupo} value={grupo.Id_Grupo}>
+              {grupo.Curso} {devolverEstudio(grupo.Id_Estudio)}
+            </MenuItem>
+          ))}
+        </Select>
+      </div>
       <Alert id="alerta" severity={severiti} style={{display:'none', marginTop:'10px'}}>{alerta}</Alert>
       <Button
         variant="contained"

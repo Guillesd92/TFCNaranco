@@ -56,6 +56,7 @@ class ProfesorController extends Controller
         $profesor->Apellidos = $request->input('apellidos');
         $profesor->Email = $request->input('email');
         $profesor->Password = bcrypt($request->input('password')); 
+        $profesor->Id_Grupo = $request->input('grupo');
         $profesor->save();
     
       
