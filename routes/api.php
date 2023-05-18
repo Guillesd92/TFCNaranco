@@ -35,6 +35,8 @@ Route::post('/alumnosBorrarCIF', 'App\Http\Controllers\AlumnosController@deleteC
 Route::get('/alumnosSinCIF', 'App\Http\Controllers\AlumnosController@getStudentsWithoutCIF');
 Route::get('/empresas', 'App\Http\Controllers\EmpresasController@index');
 Route::delete('/empresas/{CIF}', 'App\Http\Controllers\EmpresasController@delete');
-Route::post('/empresas', 'App\Http\Controllers\EmpresasController@store');
+Route::post('/empresasStore', 'App\Http\Controllers\EmpresasController@store');
 Route::get('/empresa/{CIF}', 'App\Http\Controllers\EmpresasController@find');
 Route::post('/empresa/{CIF}', 'App\Http\Controllers\EmpresasController@modify');
+Route::post('/empresaNotas', 'App\Http\Controllers\EmpresasController@saveNotes');
+Route::post('/empresasFiltro', 'App\Http\Controllers\EmpresasController@filter');

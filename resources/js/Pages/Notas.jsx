@@ -15,6 +15,7 @@ const Notas = () => {
     const [showForm, setShowForm] = useState(false);
     const [empresaDetalles, setEmpresaDetalles] = useState(null);
     const [notas, setNotas] = useState('');
+   
 
     const fetchEmpresas = async () => {
         const response = await fetch('http://127.0.0.1:8000/api/empresas');
@@ -28,11 +29,30 @@ const Notas = () => {
 
     const editarNotas = (empresa) =>{
         setEmpresaDetalles(empresa);
+        setNotas(empresa.Notas);
         setShowForm(true);
     }
 
-    const guardarNotas = () =>{
-        setShowForm(false);
+    const handleGuardarNotas =async () =>{
+
+      const formData = new FormData();
+
+      formData.append('notas', notas);
+      formData.append('cif', empresaDetalles.CIF);
+
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/api/empresaNotas/`, {
+          method: 'POST',
+          body: formData
+        });
+        const data = await response.json();
+        
+
+      } catch (error) {
+        console.error('Error:', error);
+      }
+      fetchEmpresas();
+      setShowForm(false);
     }
     
     

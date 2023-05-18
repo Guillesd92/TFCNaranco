@@ -3,7 +3,7 @@ import NavBarUser from '../Components/NavBarUser';
 import { Grid, TextField, Button, Typography, Table, TableHead, TableRow, TableCell, TableBody} from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import theme from './../Components/theme';
-import { useState, useEffect, useRef} from 'react';
+import { useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -22,10 +22,30 @@ const Tabla = () => {
   const [empresaDetalles, setEmpresaDetalles] = useState(null);
   const [alumnoSeleccionadoId, setAlumnoSeleccionadoId] = useState('');
   const [alumnosSeleccionados, setAlumnosSeleccionados] = useState([]);
+  const [filtroCIF, setFiltroCIF] = useState('');
+  const [filtroConvenio, setFiltroConvenio] = useState('');
+  const [filtroNombre, setFiltroNombre] = useState('');
+  const [filtroDireccion, setFiltroDireccion] = useState('');
 
 
   const fetchEmpresas = async () => {
     const response = await fetch('http://127.0.0.1:8000/api/empresas');
+    const data = await response.json();
+    setEmpresas(data);
+  };
+
+  const fetchEmpresasFiltro = async () => {
+    const formData = new FormData();
+    formData.append('filtroCIF', filtroCIF);
+    formData.append('filtroConvenio', filtroConvenio);
+    formData.append('filtroNombre', filtroNombre);
+    formData.append('filtroDireccion', filtroDireccion);
+
+    const response = await fetch('http://127.0.0.1:8000/api/empresasFiltro', {
+      method: 'POST',
+      body: formData
+      
+    });
     const data = await response.json();
     setEmpresas(data);
   };
@@ -149,8 +169,23 @@ const Tabla = () => {
     setAlumnosSeleccionados(newAlumnosSeleccionados);
   };
 
-  
 
+
+  
+  const handleInputBlur = () => {
+    fetchEmpresasFiltro();
+  };
+
+  const Restablecer = () => {
+    setFiltroCIF("");
+    setFiltroConvenio("");
+    setFiltroNombre("");
+    setFiltroDireccion("");
+
+   
+    fetchEmpresas();
+    
+  };
 
 
 
@@ -160,34 +195,80 @@ const Tabla = () => {
           <NavBarUser/>
             <Grid style={{display:'flex', justifyContent:'center', paddingTop:'3em', paddingBottom:'3em'}}>
               <Grid item xs={11} style={{backgroundColor: theme.palette.azul.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color}}>
-                <Table>
-                  <TableHead>
-                      <TableRow>
-                          <TableCell>Nombre</TableCell>
-                          
-                          <TableCell>Alumnos</TableCell>
-                          <TableCell>Asignar</TableCell>
-                          <TableCell>Detalles</TableCell>
-                      </TableRow>
-                  </TableHead>
-                  <TableBody>
-                  {empresas.map((empresa) => (
-                          <TableRow key={empresa.CIF}>
-                            <TableCell>{empresa.Nombre}</TableCell>
-  
-                            <TableCell>{devolverAlumnos(empresa.CIF)}</TableCell>
-                            <TableCell>
-                              <Button  variant="contained" color="primary"   onClick={() => handleOpen(empresa, 'asignar')}><FontAwesomeIcon icon={faPlus} /></Button>
-                              <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white', marginRight: '15px'}} onClick={() => handleOpen(empresa, 'borrar')}><FontAwesomeIcon icon={faTrash} /></Button>
-                            </TableCell>
-                            <TableCell>
-                              <Button  variant="contained" color="primary"   onClick={() => handleOpen(empresa, 'detalles')}>Ver más</Button>
-                              
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                  </TableBody>
-                </Table>
+               
+                <Grid style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: theme.palette.celeste.color, padding:'2em', border:'1px solid', borderRadius: '10px', borderColor:theme.palette.blanco.color, marginBottom:'2em'}}>
+                  <TextField
+                    label="Filtrar por CIF"
+                    value={filtroCIF}
+                    onChange={(e) => setFiltroCIF(e.target.value)}
+                    onBlur={handleInputBlur}
+                    variant="outlined"
+                  />
+
+                  <TextField
+                    label="Filtrar por convenio"
+                    value={filtroConvenio}
+                    onChange={(e) => setFiltroConvenio(e.target.value)}
+                    onBlur={handleInputBlur}
+                    variant="outlined"
+
+                  />
+
+                  <TextField
+                    label="Filtrar por nombre"
+                    value={filtroNombre}
+                    onChange={(e) => setFiltroNombre(e.target.value)}
+                    onBlur={handleInputBlur}
+                    variant="outlined"
+        
+                  />
+
+                  <TextField
+                    label="Filtrar por direccion"
+                    value={filtroDireccion}
+                    onChange={(e) => setFiltroDireccion(e.target.value)}
+                    onBlur={handleInputBlur}
+                    variant="outlined"
+        
+                  />
+
+              
+
+                  <Button variant="contained" color="primary" onClick={Restablecer}>
+                    Restablecer
+                  </Button>
+                  </Grid>
+                
+                <Grid>
+                  <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Nombre</TableCell>
+                            
+                            <TableCell>Alumnos</TableCell>
+                            <TableCell>Asignar</TableCell>
+                            <TableCell>Detalles</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    {empresas.map((empresa) => (
+                            <TableRow key={empresa.CIF}>
+                              <TableCell>{empresa.Nombre}</TableCell>
+    
+                              <TableCell>{devolverAlumnos(empresa.CIF)}</TableCell>
+                              <TableCell>
+                                <Button  variant="contained" color="primary"   onClick={() => handleOpen(empresa, 'asignar')}><FontAwesomeIcon icon={faPlus} /></Button>
+                                <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white', marginRight: '15px'}} onClick={() => handleOpen(empresa, 'borrar')}><FontAwesomeIcon icon={faTrash} /></Button>
+                              </TableCell>
+                              <TableCell>
+                                <Button  variant="contained" color="primary"   onClick={() => handleOpen(empresa, 'detalles')}>Ver más</Button>
+                                
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                    </TableBody>
+                  </Table>
+                </Grid>
               </Grid>
             </Grid>
             {showForm && (

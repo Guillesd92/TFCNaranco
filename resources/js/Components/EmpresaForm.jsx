@@ -29,7 +29,7 @@ const EmpresaForm = () => {
      
       
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/empresas', {
+        const response = await fetch('http://127.0.0.1:8000/api/empresasStore', {
           method: 'POST',
           body: formData
         });
