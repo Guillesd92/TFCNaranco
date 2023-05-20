@@ -10,7 +10,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import AlumnoForm from './../Components/AlumnoForm';
 import { Alert } from '@material-ui/lab';
 
-const Tabla = () => {
+const AlumnosLista = () => {
 
   const [empresas, setEmpresas] = useState([]);
   const [alumnos, setAlumnos] = useState([]);
@@ -21,11 +21,11 @@ const Tabla = () => {
   const [cifEmpresaSeleccionada, setCifEmpresaSeleccionada] = useState(null);
   const [empresaDetalles, setEmpresaDetalles] = useState(null);
   const [alumnoSeleccionadoId, setAlumnoSeleccionadoId] = useState('');
-  const [alumnosSeleccionados, setAlumnosSeleccionados] = useState([]);
-  const [filtroCIF, setFiltroCIF] = useState('');
-  const [filtroConvenio, setFiltroConvenio] = useState('');
   const [filtroNombre, setFiltroNombre] = useState('');
-  const [filtroDireccion, setFiltroDireccion] = useState('');
+  const [filtroEmail, setFiltroEmail] = useState('');
+  const [filtroLocalidad, setFiltroLocalidad] = useState('');
+  const [filtroAnio, setFiltroAnio] = useState('');
+  const [filtroGrupo, setFiltroGrupo] = useState('');
 
 
   const fetchEmpresas = async () => {
@@ -126,54 +126,11 @@ const Tabla = () => {
 
   };
 
-  const devolverAlumnos = (CIF) => {
-    const alumnosConMismoCIF = alumnos.filter(alumno => alumno.CIF == CIF);
-    
-    return alumnosConMismoCIF.map(alumno => (
-      <p key={alumno.id}>
-        {alumno.Nombre} {alumno.Apellidos}
-        <br />
-      </p>
-    ));
-  }
-
-  const devolverAlumnosConCheckbox = (CIF) => {
-    const alumnosConMismoCIF = alumnos.filter(alumno => alumno.CIF === CIF);
-    
-    return alumnosConMismoCIF.map(alumno => (
-      <div key={alumno.Id_Alumno}>
-        <label>
-          <input
-            type="checkbox"
-            value={alumno.id}
-            onChange={() => handleAlumnoCheckbox(alumno.Id_Alumno)}
-          />
-          {alumno.Nombre} {alumno.Apellidos}
-        </label>
-      </div>
-    ));
-
-  }
-
-  const handleAlumnoCheckbox = (idAlumno) => {
-
-    const newAlumnosSeleccionados = [...alumnosSeleccionados];
-    const index = newAlumnosSeleccionados.indexOf(idAlumno);
-    
-    if (index > -1) {
-      newAlumnosSeleccionados.splice(index, 1);
-    } else {
-      newAlumnosSeleccionados.push(idAlumno);
-    }
-    
-    setAlumnosSeleccionados(newAlumnosSeleccionados);
-  };
-
 
 
   
   const handleInputBlur = () => {
-    fetchEmpresasFiltro();
+    fetchAalumnosFiltro();
   };
 
   const Restablecer = () => {
@@ -183,7 +140,7 @@ const Tabla = () => {
     setFiltroDireccion("");
 
    
-    fetchEmpresas();
+    fetchAlumnos();
     
   };
 
@@ -373,4 +330,4 @@ const Tabla = () => {
     );
 }
 
-export default Tabla;
+export default AlumnosLista;

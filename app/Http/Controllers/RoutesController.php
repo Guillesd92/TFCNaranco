@@ -47,6 +47,11 @@ class RoutesController extends Controller
         return Inertia::render('Notas');
     }
 
+    public function alumnosLista()
+    {
+        return Inertia::render('AlumnosLista');
+    }
+
     public function inicio()
     {
         return Inertia::render('Welcome');
