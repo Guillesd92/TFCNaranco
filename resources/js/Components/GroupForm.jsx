@@ -122,7 +122,7 @@ const GroupForm = () => {
     type="submit"
     style={{ marginTop: '20px' }}
   >
-    Crear usuario
+    Crear Grupo
   </Button>
 </form>
   );

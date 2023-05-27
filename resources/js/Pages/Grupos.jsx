@@ -122,7 +122,7 @@ const Grupos = () => {
                                 <TableCell>{grupo.Curso}</TableCell>
                                 <TableCell>{getNombreEstudio(grupo.Id_Estudio)}</TableCell>
                                 <TableCell> 
-                                    <Button variant="contained" onClick={() => handleDeleteGrupo(grupo.Id_Grupo)}>Borrar</Button> 
+                                    <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white'}} onClick={() => handleDeleteGrupo(grupo.Id_Grupo)}>Borrar</Button> 
                                 </TableCell>
                             </TableRow>
                         ))}

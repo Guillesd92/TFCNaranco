@@ -88,7 +88,7 @@ const Estudios = () => {
                             <TableRow key={estudio.Id_Estudio}>
                                 <TableCell>{estudio.Nombre}</TableCell>
                                 <TableCell> 
-                                    <Button variant="contained" onClick={() => handleDeleteEstudio(estudio.Id_Estudio)}>Borrar</Button> 
+                                    <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white'}} onClick={() => handleDeleteEstudio(estudio.Id_Estudio)}>Borrar</Button> 
                                 </TableCell>
                             </TableRow>
                         ))}

@@ -93,7 +93,7 @@ const Usuarios = () => {
                             <TableCell>{usuario.Email}</TableCell>
                             <TableCell> 
                                 {usuario.Id_Profesor !== 1 &&
-                                    <Button variant="contained" onClick={() => handleDeleteUser(usuario.Id_Profesor, usuario.Email)}>Borrar</Button>
+                                    <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white'}} onClick={() => handleDeleteUser(usuario.Id_Profesor, usuario.Email)}>Borrar</Button>
                                 }
                             </TableCell>
                             </TableRow>

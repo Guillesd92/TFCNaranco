@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBarUser from '../Components/NavBarUser';
+import NavBarra from '../Components/NavBarra';
 import { Grid, TextField, Button, Typography, Table, TableHead, TableRow, TableCell, TableBody,  Select, MenuItem} from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import theme from './../Components/theme';
@@ -22,10 +22,7 @@ const AlumnosLista = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [alumnoDetalles , setAlumnoDetalles] = useState('');
   
-  const [filtroNombre, setFiltroNombre] = useState('');
-  const [filtroEmail, setFiltroEmail] = useState('');
-  const [filtroLocalidad, setFiltroLocalidad] = useState('');
-  const [filtroAnio, setFiltroAnio] = useState('');
+ 
   const [filtroGrupo, setFiltroGrupo] = useState('');
 
 
@@ -50,10 +47,7 @@ const AlumnosLista = () => {
   const fetchAlumnosFiltro = async () => {
     
     const formData = new FormData();
-    formData.append('filtroNombre', filtroNombre);
-    formData.append('filtroEmail', filtroEmail);
-    formData.append('filtroLocalidad', filtroLocalidad);
-    formData.append('filtroAnio', filtroAnio);
+    
     formData.append('filtroGrupo', filtroGrupo !== "" ? parseInt(filtroGrupo) : 0);
    console.log(filtroGrupo);
 
@@ -121,10 +115,7 @@ const AlumnosLista = () => {
   };
 
   const Restablecer = () => {
-    setFiltroNombre("");
-    setFiltroEmail("");
-    setFiltroLocalidad("");
-    setFiltroAnio("");
+    
     setFiltroGrupo("");
 
    
@@ -149,63 +140,16 @@ const AlumnosLista = () => {
     return (
         <div>
         <Grid style={{ minHeight: '100vh', backgroundColor: theme.palette.azulOscuro.color }}>
-          <NavBarUser/>
+          <NavBarra/>
             <Grid style={{display:'flex', justifyContent:'center', paddingTop:'3em', paddingBottom:'3em'}}>
               <Grid item xs={11} style={{backgroundColor: theme.palette.azul.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color}}>
                
                 <Grid container  style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: theme.palette.celeste.color, padding:'2em', border:'1px solid', borderRadius: '10px', borderColor:theme.palette.blanco.color, marginBottom:'2em'}}>
-                  <Grid item xs={12} sm={6} md={2} style={{display:'flex', justifyContent:'center'}}>
-                    <TextField
-                      label="Nombre"
-                      value={filtroNombre}
-                      onChange={(e) => {
-                        setFiltroNombre(e.target.value);
-               
-                      }}
-                      variant="outlined"
-                      style={{ width: '90%' , marginBottom: '10px'}}
-                    />
-                  </Grid>  
-                  <Grid item xs={12} sm={6} md={2} style={{display:'flex', justifyContent:'center'}}>
-                    <TextField
-                      label="Email"
-                      value={filtroEmail}
-                      onChange={(e) => {
-                        setFiltroEmail(e.target.value);
-             
-                      }}
-                      variant="outlined"
-                      style={{ width: '90%',  marginBottom: '10px'}}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6} md={2} style={{display:'flex', justifyContent:'center'}}>
-                    <TextField
-                      label="Localidad"
-                      value={filtroLocalidad}
-                      onChange={(e) => {
-                        setFiltroLocalidad(e.target.value);
-                 
-                      }}
-                      variant="outlined"
-                      style={{ width: '90%',  marginBottom: '10px' }}
-                    />
-                  </Grid>
+                  
+                  
 
                   <Grid item xs={12} sm={6} md={2} style={{display:'flex', justifyContent:'center'}}>
-                    <TextField
-                      label="Año"
-                      type="number"
-                      value={filtroAnio}
-                      onChange={(e) => {
-                        setFiltroAnio(e.target.value);
-                    
-                      }}
-                      variant="outlined"
-                      style={{ width: '90%',  marginBottom: '20px' }}
-                    />
-                  </Grid>
-
-                  <Grid item xs={12} sm={6} md={2} style={{display:'flex', justifyContent:'center'}}>
+                    <label htmlFor="">Curso:</label>
                   <Select
                     label="Grupo"
                     value={filtroGrupo}

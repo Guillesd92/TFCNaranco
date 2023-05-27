@@ -33,6 +33,10 @@ Route::post('/alumnos', 'App\Http\Controllers\AlumnosController@store');
 Route::post('/alumno', 'App\Http\Controllers\AlumnosController@asign');
 Route::post('/alumnosBorrarCIF', 'App\Http\Controllers\AlumnosController@deleteCIF');
 Route::get('/alumnosSinCIF', 'App\Http\Controllers\AlumnosController@getStudentsWithoutCIF');
+Route::post('/alumnosFiltro', 'App\Http\Controllers\AlumnosController@filter');
+Route::middleware('cors')->group(function () {
+Route::post('/alumnosImportarCsv', 'App\Http\Controllers\AlumnosController@importCsv');
+});
 Route::get('/empresas', 'App\Http\Controllers\EmpresasController@index');
 Route::delete('/empresas/{CIF}', 'App\Http\Controllers\EmpresasController@delete');
 Route::post('/empresasStore', 'App\Http\Controllers\EmpresasController@store');

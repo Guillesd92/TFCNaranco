@@ -14,6 +14,8 @@ const Alumnos = () => {
     const [alumnos, setAlumnos] = useState([]);
     const [alerta, setAlerta] = useState('');
 
+    const fileInputRef = useRef(null);
+
     const fetchAlumnos = async () => {
         const response = await fetch('http://127.0.0.1:8000/api/alumnos');
         const data = await response.json();
@@ -56,6 +58,34 @@ const Alumnos = () => {
         fetchAlumnos();
         
       };
+
+      const handleFileSelect = () => {
+        fileInputRef.current.click();
+      };
+
+      const handleImport = async (event) => {
+        const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+  
+      
+        try {
+          const response = await fetch('http://127.0.0.1:8000/api/alumnosImportarCsv', {
+            method: 'POST',
+            body: formData,
+          });
+      
+          if (response.ok) {
+           
+            fetchAlumnos();
+          } else {
+ 
+            console.error('Error al importar el archivo');
+          }
+        } catch (error) {
+          console.error('Error al enviar la solicitud', error);
+        }
+      };
     
 
     
@@ -72,6 +102,10 @@ const Alumnos = () => {
                 <Button variant={formButton} color="primary" onClick={handleCreateAlumno}>
                   Crear alumnos
                 </Button>
+                <input type="file" accept=".csv, .txt" style={{ display: 'none' }} ref={fileInputRef} onChange={handleImport} />
+                  <Button variant="contained" color="success" onClick={handleFileSelect}>
+                    Importar CSV
+                  </Button>
               </Grid>
               {showList ? (
                 <Grid style={{paddingTop:'3em', paddingBottom:'3em'}}>
@@ -92,7 +126,7 @@ const Alumnos = () => {
                             <TableCell>{alumno.Apellidos}</TableCell>
                             <TableCell>{alumno.Email}</TableCell>
                             <TableCell> 
-                                <Button variant="contained" onClick={() => handleDeleteAlumno(alumno.Id_Alumno, alumno.Email)}>Borrar</Button>
+                                <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white'}}  onClick={() => handleDeleteAlumno(alumno.Id_Alumno, alumno.Email)}>Borrar</Button>
                             </TableCell>
                             </TableRow>
                         ))}

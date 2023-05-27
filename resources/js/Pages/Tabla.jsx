@@ -7,6 +7,8 @@ import { useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import AlumnoForm from './../Components/AlumnoForm';
 import { Alert } from '@material-ui/lab';
 
@@ -202,7 +204,6 @@ const Tabla = () => {
                       label="CIF"
                       value={filtroCIF}
                       onChange={(e) => setFiltroCIF(e.target.value)}
-                      onBlur={handleInputBlur}
                       variant="outlined"
                       style={{ width: '90%' , marginBottom: '10px'}}
                     />
@@ -211,8 +212,7 @@ const Tabla = () => {
                     <TextField
                       label="Convenio"
                       value={filtroConvenio}
-                      onChange={(e) => setFiltroConvenio(e.target.value)}
-                      onBlur={handleInputBlur}
+                      onChange={(e) => setFiltroConvenio(e.target.value)}               
                       variant="outlined"
                       style={{ width: '90%',  marginBottom: '10px'}}
                     />
@@ -221,8 +221,7 @@ const Tabla = () => {
                     <TextField
                       label="Nombre"
                       value={filtroNombre}
-                      onChange={(e) => setFiltroNombre(e.target.value)}
-                      onBlur={handleInputBlur}
+                      onChange={(e) => setFiltroNombre(e.target.value)}       
                       variant="outlined"
                       style={{ width: '90%',  marginBottom: '10px' }}
                     />
@@ -232,16 +231,18 @@ const Tabla = () => {
                     <TextField
                       label="Direccion"
                       value={filtroDireccion}
-                      onChange={(e) => setFiltroDireccion(e.target.value)}
-                      onBlur={handleInputBlur}
+                      onChange={(e) => setFiltroDireccion(e.target.value)}             
                       variant="outlined"
                       style={{ width: '90%',  marginBottom: '20px' }}
                     />
                   </Grid>
 
                   <Grid item xs={12} sm={12} md={2} style={{display:'flex', alignItems:'center',  justifyContent:'center'}}>
+                  <Button variant="contained" color="primary" onClick={fetchEmpresasFiltro}>
+                  <FontAwesomeIcon icon={faSearch} />
+                    </Button>
                     <Button variant="contained" color="primary" onClick={Restablecer}>
-                      Restablecer
+                    <FontAwesomeIcon icon={faSync} />
                     </Button>
                   </Grid>
                 </Grid>
@@ -279,7 +280,7 @@ const Tabla = () => {
               </Grid>
             </Grid>
             {showForm && (
-              <Grid container item xs={6} className="overlay" style={{backgroundColor: theme.palette.azulClaro.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color,  position: "fixed",top: "50%",left: "50%",transform: "translate(-50%, -50%)",}}>
+              <Grid container item xs={6} className="overlay" style={{backgroundColor: theme.palette.azulClaro.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color,  position: "fixed",top: "50%",left: "50%",transform: "translate(-50%, -50%)"}}>
                             
                 <Grid item xs={12}>
                 <Autocomplete
@@ -296,7 +297,7 @@ const Tabla = () => {
               </Grid>
             )}
             {showFormDelete && (
-              <Grid container item xs={6} className="overlay" style={{backgroundColor: theme.palette.azulClaro.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color,  position: "fixed",top: "50%",left: "50%",transform: "translate(-50%, -50%)",}}>
+              <Grid container item xs={6} className="overlay" style={{backgroundColor: theme.palette.azulClaro.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color,  position: "fixed",top: "50%",left: "50%",transform: "translate(-50%, -50%)" }}>
                             
                 <Grid item xs={12}>
                   {devolverAlumnosConCheckbox(cifEmpresaSeleccionada)}
@@ -310,7 +311,7 @@ const Tabla = () => {
               </Grid>
             )}
             {showDetails && (
-              <Grid container item xs={10} sm={8} className="overlay" style={{backgroundColor: theme.palette.azulClaro.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color,  position: "fixed",top: "50%",left: "50%",transform: "translate(-50%, -50%)",}}>
+              <Grid container item xs={10} sm={8} className="overlay" style={{backgroundColor: theme.palette.azulClaro.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color,  position: "fixed",top: "50%",left: "50%",transform: "translate(-50%, -50%)",zIndex: 9999 }}>
                             
                 <Grid item xs={12}>
 
