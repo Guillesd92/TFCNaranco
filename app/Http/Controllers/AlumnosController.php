@@ -108,8 +108,7 @@ class AlumnosController extends Controller
         return response()->json(['message' => 'CIF eliminado correctamente']);
     }
 
-    public function importCsv(Request $request)
-    {
+    public function importCsv(Request $request){
         if ($request->hasFile('file')) {
             $file = $request->file('file');
            
@@ -142,8 +141,29 @@ class AlumnosController extends Controller
     
         return response()->json(['error' => 'No file provided'], 400);
     }
+
+  
+    public function move(Request $request){
+        $alumnosSeleccionados = explode(',', $request->input('alumnosSeleccionados'));
+        $nuevoGrupo = $request->input('nuevoGrupo');
+        
+    
+        foreach ($alumnosSeleccionados as $alumnoId) {
+            $alumno = Alumno::where('Id_Alumno', $alumnoId)->first();
+            $alumno->Id_Grupo = $nuevoGrupo;
+            $alumno->save();
+
+        }
+
+
+        return response()->json(['message' => 'Alumnos movidos exitosamente'], 200);
+    }
+
     
 }
+
+    
+
 
    
 
