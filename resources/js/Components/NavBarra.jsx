@@ -26,7 +26,7 @@ const NavBarra = () => {
             <Button className="navbar-button" onClick={() => redirect(route('grupos'))}>Grupos</Button>
             <Button className="navbar-button" onClick={() => redirect(route('estudios'))}>Estudios</Button>
             <Button className="navbar-button" onClick={() => redirect(route('alumnos'))}>Alumnos</Button>
-            <Button className="navbar-button" onClick={() => redirect(route('moverGrupos'))}>Mover Alumnos</Button>
+            <Button className="navbar-button" onClick={() => redirect(route('moverGrupos'))}>Promocionar</Button>
           </Grid>
           <Grid>
             <Button className="navbar-button"  onClick={() => redirect(route('inicio'))}><FontAwesomeIcon icon={faArrowRightFromBracket} /></Button>

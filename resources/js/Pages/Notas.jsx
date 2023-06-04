@@ -6,6 +6,9 @@ import { useState, useEffect, useRef} from 'react';
 import EmpresaForm from './../Components/EmpresaForm';
 import ModEmpresaForm from './../Components/ModEmpresaForm';
 import { Alert } from '@material-ui/lab';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const Notas = () => {
 
@@ -16,6 +19,10 @@ const Notas = () => {
     const [empresaDetalles, setEmpresaDetalles] = useState(null);
     const [notas, setNotas] = useState('');
    
+    const [filtroCIF, setFiltroCIF] = useState('');
+    const [filtroConvenio, setFiltroConvenio] = useState('');
+    const [filtroNombre, setFiltroNombre] = useState('');
+    const [filtroDireccion, setFiltroDireccion] = useState('');
 
     const fetchEmpresas = async () => {
         const response = await fetch('http://127.0.0.1:8000/api/empresas');
@@ -32,6 +39,33 @@ const Notas = () => {
         setNotas(empresa.Notas);
         setShowForm(true);
     }
+
+    const fetchEmpresasFiltro = async () => {
+      const formData = new FormData();
+      formData.append('filtroCIF', filtroCIF);
+      formData.append('filtroConvenio', filtroConvenio);
+      formData.append('filtroNombre', filtroNombre);
+      formData.append('filtroDireccion', filtroDireccion);
+  
+      const response = await fetch('http://127.0.0.1:8000/api/empresasFiltro', {
+        method: 'POST',
+        body: formData
+        
+      });
+      const data = await response.json();
+      setEmpresas(data);
+    };
+
+    const Restablecer = () => {
+      setFiltroCIF("");
+      setFiltroConvenio("");
+      setFiltroNombre("");
+      setFiltroDireccion("");
+  
+     
+      fetchEmpresas();
+      
+    };
 
     const handleGuardarNotas =async () =>{
 
@@ -61,11 +95,61 @@ const Notas = () => {
         <Grid style={{ minHeight: '100vh', backgroundColor: theme.palette.azulOscuro.color }}>
           <NavBarUser />
           <Grid style={{display:'flex', justifyContent:'center', paddingTop:'3em', paddingBottom:'3em'}}>
-            <Grid item xs={11} md={8} style={{backgroundColor: theme.palette.azul.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color}}>
-                <Grid>
-                <Typography variant="h4" align="center">Listado de Notas</Typography>
+            <Grid item xs={11}  style={{backgroundColor: theme.palette.azul.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color}}>
+
+                <Grid style={{marginBottom: '2em'}}>
+                  <Typography variant="h4" align="center" >Listado de Notas</Typography>
                 </Grid>
-                <Grid style={{paddingTop:'3em', paddingBottom:'3em'}}>
+
+                  <Grid container  style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: theme.palette.celeste.color, padding:'2em', border:'1px solid', borderRadius: '10px', borderColor:theme.palette.blanco.color, marginBottom:'2em'}}>
+                    <Grid item xs={12} sm={6} md={2} style={{display:'flex', justifyContent:'center'}}>
+                      <TextField
+                        label="CIF"
+                        value={filtroCIF}
+                        onChange={(e) => setFiltroCIF(e.target.value)}
+                        variant="outlined"
+                        style={{ width: '90%' , marginBottom: '10px'}}
+                      />
+                    </Grid>  
+                    <Grid item xs={12} sm={6} md={2} style={{display:'flex', justifyContent:'center'}}>
+                      <TextField
+                        label="Convenio"
+                        value={filtroConvenio}
+                        onChange={(e) => setFiltroConvenio(e.target.value)}               
+                        variant="outlined"
+                        style={{ width: '90%',  marginBottom: '10px'}}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={2} style={{display:'flex', justifyContent:'center'}}>
+                      <TextField
+                        label="Nombre"
+                        value={filtroNombre}
+                        onChange={(e) => setFiltroNombre(e.target.value)}       
+                        variant="outlined"
+                        style={{ width: '90%',  marginBottom: '10px' }}
+                      />
+                    </Grid>
+
+                    <Grid item xs={12} sm={6} md={3} style={{display:'flex', justifyContent:'center'}}>
+                      <TextField
+                        label="Direccion"
+                        value={filtroDireccion}
+                        onChange={(e) => setFiltroDireccion(e.target.value)}             
+                        variant="outlined"
+                        style={{ width: '90%',  marginBottom: '20px' }}
+                      />
+                    </Grid>
+
+                  <Grid item xs={12} sm={12} md={2} style={{display:'flex', alignItems:'center',  justifyContent:'space-evenly'}}>
+                    <Button variant="contained" color="primary" onClick={fetchEmpresasFiltro} style={{padding:'1em'}}>
+                    <FontAwesomeIcon icon={faSearch} />
+                      </Button>
+                      <Button  variant="contained" color="primary" onClick={Restablecer} style={{padding:'1em'}}>
+                      <FontAwesomeIcon icon={faSync} />
+                      </Button>
+                  </Grid>
+                </Grid>
+                <Grid style={{paddingTop:'1em', paddingBottom:'3em'}}>
                   <Alert id="alerta" severity="success" style={{display:'none', marginTop:'10px', marginBottom:'10px'}}>{alerta}</Alert>
                   <Table>
                     <TableHead>

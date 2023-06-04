@@ -116,9 +116,7 @@ const AlumnosLista = () => {
     }
   
   
-  const handleInputBlur = () => {
-    fetchAlumnosFiltro();
-  };
+  
 
   const Restablecer = () => {
     setFiltroNombre("");
@@ -153,6 +151,10 @@ const AlumnosLista = () => {
             <Grid style={{display:'flex', justifyContent:'center', paddingTop:'3em', paddingBottom:'3em'}}>
               <Grid item xs={11} style={{backgroundColor: theme.palette.azul.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color}}>
                
+                <Grid style={{marginBottom: '2em'}}>
+                  <Typography variant="h4" align="center" >Listado de Alumnos</Typography>
+                </Grid>
+
                 <Grid container  style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: theme.palette.celeste.color, padding:'2em', border:'1px solid', borderRadius: '10px', borderColor:theme.palette.blanco.color, marginBottom:'2em'}}>
                   <Grid item xs={12} sm={6} md={2} style={{display:'flex', justifyContent:'center'}}>
                     <TextField

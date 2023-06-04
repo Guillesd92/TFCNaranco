@@ -36,8 +36,11 @@ const Empresas = () => {
     };
 
     const handleShowMod = (CIF) => {
+      
       setSelectedCIF(CIF);
       setShowMod(true);
+      
+  
     }
   
     const handleCreateEmpresa = () => {
@@ -73,7 +76,7 @@ const Empresas = () => {
         <Grid style={{ minHeight: '100vh', backgroundColor: theme.palette.azulOscuro.color }}>
           <NavBarUser />
           <Grid style={{display:'flex', justifyContent:'center', paddingTop:'3em', paddingBottom:'3em'}}>
-            <Grid item xs={11} sm={9} md={6} style={{backgroundColor: theme.palette.azul.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color}}>
+            <Grid item xs={11} sm={9} md={7} style={{backgroundColor: theme.palette.azul.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color}}>
               <Grid style={{display:'flex', justifyContent:'space-evenly'}}>
                 <Button variant={listButton} color="primary" onClick={handleShowList}>
                   Listar empresas

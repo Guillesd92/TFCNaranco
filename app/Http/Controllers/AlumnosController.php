@@ -120,7 +120,6 @@ class AlumnosController extends Controller
             while (($line = fgets($handle)) !== false) {
                 $data = explode(',', $line);
                 
-                // Crear un nuevo alumno y asignar los valores directamente del TXT
                 $alumno = new Alumno();
                 $alumno->Nombre = $data[0];
                 $alumno->Apellidos = $data[1];

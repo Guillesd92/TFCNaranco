@@ -1,37 +1,53 @@
 
 import React from 'react';
 import NavBarra from '../Components/NavBarra';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import theme from './../Components/theme';
+import "./../../css/home.css";
 
 const Home = () => {
     return (
         <div>
             <Grid container direction="column" style={{ minHeight: '100vh', backgroundColor: theme.palette.azulOscuro.color }}>
                 <NavBarra />
-                <Grid item style={{ backgroundColor: theme.palette.azulOscuro.color }}>
-                    <h1 className='text-center' style={{ fontSize: '35px', padding: '1em' }}> ¡Bienvenido/a al panel de administrador !&#x1F44B;</h1>
-                </Grid>
-                <Grid item container style={{ display: 'flex', flexDirection: 'row', flex: '1' }}>
-                    <Grid item style={{ border: '2px solid black', backgroundColor: theme.palette.azul.color, width: '50%' }}>
-                        <h1 className='text-center' style={{ fontSize: '35px', padding: '1em' }}>Paso 1 </h1>
-                        <p className='text-center'>Crea los prefesores necesarios para el funcionamiento de la web</p>
+                <Grid item style={{ backgroundColor: theme.palette.azulOscuro.color}}>
+                    <h1 className='text-center' style={{ fontSize: '35px', padding:'0.7em' }}> ¡Bienvenido/a al panel de administrador !&#x1F44B;</h1>
+                    <Grid style={{ display: 'flex', justifyContent: 'center'}}>
+                        <Typography variant="h6" align="center" style={{ width:'50%'}}>Aquí encontrarás todas las herramientas y funcionalidades necesarias para  poder gestionar y controlar todos los aspectos clave de tu plataforma. </Typography>
                     </Grid>
-                    <Grid item style={{ border: '2px solid black', backgroundColor: theme.palette.azul.color, width: '50%' }}>
-                        <h1 className='text-center' style={{ fontSize: '35px', padding: '1em' }}>Paso 2</h1>
-                        <p className='text-center'>Crea los estudios necesarios para los diferentes cursos del centro</p>
+                    <Grid style={{ display: 'flex', justifyContent: 'center', marginTop:'10px'}}>
+                        <Typography variant="h6" align="center" style={{ width:'50%'}}>Estas son las acciones que podrás realizar aquí</Typography>
                     </Grid>
                 </Grid>
-                <Grid item container style={{ display: 'flex', flexDirection: 'row', flex: '1' }}>
-                    <Grid item style={{ border: '2px solid black', backgroundColor: theme.palette.azul.color, width: '50%' }}>
-                        <h1 className='text-center' style={{ fontSize: '35px', padding: '1em' }}>Paso 3</h1>
-                        <p className='text-center'>Ahora disponte a crear los grupos los cuales cursen los estudios previamente creados</p>
+                <Grid item style={{ flex: 1, backgroundColor: theme.palette.azul.color}}>
+                    <Grid container justify="center">
+                        <Grid item xs={12} sm={6} md={2} style={{display: 'flex', justifyContent: 'center'}}>
+                            <Grid style={{width: '150px', height: '150px', borderRadius: '50%', backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                <span>Texto 1</span>
+                            </Grid>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={2} style={{display: 'flex', justifyContent: 'center'}}>
+                            <Grid style={{width: '150px', height: '150px', borderRadius: '50%', backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                <span>Texto 1</span>
+                            </Grid>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={2} style={{display: 'flex', justifyContent: 'center'}}>
+                            <Grid style={{width: '150px', height: '150px', borderRadius: '50%', backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                <span>Texto 1</span>
+                            </Grid>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={2} style={{display: 'flex', justifyContent: 'center'}}>
+                            <Grid style={{width: '150px', height: '150px', borderRadius: '50%', backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                <span>Texto 1</span>
+                            </Grid>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={2} style={{display: 'flex', justifyContent: 'center'}}>
+                            <Grid style={{width: '150px', height: '150px', borderRadius: '50%', backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                <span>Texto 1</span>
+                            </Grid>
+                        </Grid>
                     </Grid>
-                    <Grid item style={{ border: '2px solid black', backgroundColor: theme.palette.azul.color, width: '50%' }}>
-                        <h1 className='text-center' style={{ fontSize: '35px', padding: '1em' }}>Paso 4</h1>
-                        <p className='text-center'>Para acabar puedes crear alumnos y asociarlos a los grupos creados, tambien puedes importarlos con un archivo CSV</p>
-                    </Grid>
-                </Grid>
+                </Grid> 
             </Grid>
         </div>
     );

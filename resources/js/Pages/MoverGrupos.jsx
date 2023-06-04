@@ -199,52 +199,50 @@ const MoverAlumnos = () => {
                
                 <Grid container  style={{ display: 'flex', justifyContent: 'space-evenly', backgroundColor: theme.palette.celeste.color, padding:'2em', border:'1px solid', borderRadius: '10px', borderColor:theme.palette.blanco.color, marginBottom:'2em'}}>
                   
-                  <Grid item xs={12} sm={6} md={5} style={{display:'flex', justifyContent:'center'}}>
-                  <Typography variant="h6" align="center" style={{marginRight:'1em'}}>Alumnos</Typography>
-                    <Select
-                      label="Grupo"
-                      value={filtroGrupo}
-                      onChange={(e) => {
-                        setFiltroGrupo(e.target.value);
-                      
-                      }}
-                      variant="outlined"
-                      style={{ width: '90%', marginBottom: '20px' }}
-                    >
-                      <MenuItem value="">
-                          Todos
-                        </MenuItem>
-                      {grupos.map((grupo) => (
-                        <MenuItem key={grupo.Id_Grupo} value={grupo.Id_Grupo}>
-                          {grupo.Curso} {devolverEstudios(grupo.Id_Estudio)}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                    <Button style={{marginLeft:'1em'}} variant="contained" color="primary" onClick={fetchAlumnosFiltro}><FontAwesomeIcon icon={faSearch} /></Button>
-                  </Grid>
+                <Grid item xs={12} md={5}  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                  <Typography variant="subtitle1" align="center" style={{ marginRight: '1em' }}>Alumnos</Typography>
+                  
+                  <Select
+                    label="Grupo"
+                    value={filtroGrupo}
+                    onChange={(e) => {
+                      setFiltroGrupo(e.target.value);
+                    }}
+                    variant="outlined"
+                    style={{ width: '90%'}}
+                  >
+                    <MenuItem value="">Todos</MenuItem>
+                    {grupos.map((grupo) => (
+                      <MenuItem key={grupo.Id_Grupo} value={grupo.Id_Grupo}>
+                        {grupo.Curso} {devolverEstudios(grupo.Id_Estudio)}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                
+                  <Button variant="contained" color="primary" onClick={fetchAlumnosFiltro} style={{ marginLeft: '1em',  padding:'1.5em'}}>
+                    <FontAwesomeIcon icon={faSearch} />
+                  </Button>
+                </Grid>
 
-                  <Grid item xs={12} sm={6} md={5} style={{display:'flex', justifyContent:'center'}}>
-                    <Typography variant="h6" align="center" style={{marginRight:'1em'}}>Mover</Typography>
+                  <Grid item xs={12} md={5}  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <Typography variant="subtitle1" align="center" style={{ marginRight: '1em' }}>Promocion</Typography>
                     <Select
                       label="Nuevo grupo"
                       value={nuevoGrupo}
                       onChange={(e) => {
                         setNuevoGrupo(e.target.value);
-                      
                       }}
                       variant="outlined"
-                      style={{ width: '90%', marginBottom: '20px' }}
+                      style={{ width: '100%'}}
                     >
-                      <MenuItem value="">
-                          Vacio
-                        </MenuItem>
+                      <MenuItem value="">Vacio</MenuItem>
                       {grupos.map((grupo) => (
                         <MenuItem key={grupo.Id_Grupo} value={grupo.Id_Grupo}>
                           {grupo.Curso} {devolverEstudios(grupo.Id_Estudio)}
                         </MenuItem>
                       ))}
                     </Select>
-                    <Button style={{marginLeft:'1em'}} variant="contained" color="primary" onClick={handleMoverAlumnos}>
+                    <Button variant="contained" color="primary" onClick={handleMoverAlumnos} style={{ marginLeft: '1em', padding:'1.5em' }}>
                       <FontAwesomeIcon icon={faCheckCircle} />
                     </Button>
                   </Grid>
@@ -270,7 +268,7 @@ const MoverAlumnos = () => {
                              
                               <TableCell>
                                 <Checkbox
-                                  checked={checked}
+                                  
                                   onChange={() => handleAlumnoSeleccionado(alumno.Id_Alumno)}
                                 />
                                 </TableCell>

@@ -172,12 +172,6 @@ const Tabla = () => {
   };
 
 
-
-  
-  const handleInputBlur = () => {
-    fetchEmpresasFiltro();
-  };
-
   const Restablecer = () => {
     setFiltroCIF("");
     setFiltroConvenio("");
@@ -196,8 +190,14 @@ const Tabla = () => {
         <Grid style={{ minHeight: '100vh', backgroundColor: theme.palette.azulOscuro.color }}>
           <NavBarUser/>
             <Grid style={{display:'flex', justifyContent:'center', paddingTop:'3em', paddingBottom:'3em'}}>
+
+
               <Grid item xs={11} style={{backgroundColor: theme.palette.azul.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color}}>
-               
+
+                <Grid style={{marginBottom: '2em'}}>
+                  <Typography variant="h4" align="center" >Listado de Convenios</Typography>
+                </Grid>
+
                 <Grid container  style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: theme.palette.celeste.color, padding:'2em', border:'1px solid', borderRadius: '10px', borderColor:theme.palette.blanco.color, marginBottom:'2em'}}>
                   <Grid item xs={12} sm={6} md={2} style={{display:'flex', justifyContent:'center'}}>
                     <TextField
@@ -237,17 +237,17 @@ const Tabla = () => {
                     />
                   </Grid>
 
-                  <Grid item xs={12} sm={12} md={2} style={{display:'flex', alignItems:'center',  justifyContent:'center'}}>
-                  <Button variant="contained" color="primary" onClick={fetchEmpresasFiltro}>
-                  <FontAwesomeIcon icon={faSearch} />
-                    </Button>
-                    <Button variant="contained" color="primary" onClick={Restablecer}>
-                    <FontAwesomeIcon icon={faSync} />
-                    </Button>
+                  <Grid item xs={12} sm={12} md={2} style={{display:'flex', alignItems:'center',  justifyContent:'space-evenly'}}>
+                    <Button variant="contained" color="primary" onClick={fetchEmpresasFiltro} style={{padding:'1em'}}>
+                    <FontAwesomeIcon icon={faSearch} />
+                      </Button>
+                      <Button  variant="contained" color="primary" onClick={Restablecer} style={{padding:'1em'}}>
+                      <FontAwesomeIcon icon={faSync} />
+                      </Button>
                   </Grid>
                 </Grid>
                 
-                <Grid>
+                <Grid style={{paddingTop:'1em', paddingBottom:'3em'}}>
                   <Table>
                     <TableHead>
                         <TableRow>

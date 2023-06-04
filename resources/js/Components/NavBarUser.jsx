@@ -21,7 +21,7 @@ const NavBarUser = () => {
       <AppBar position="static" style={{backgroundColor: theme.palette.azul.color}}>
         <Toolbar style={{display:'flex', justifyContent:'space-between'}}>
           <Grid>
-            <Button className="navbar-button" onClick={() => redirect(route('tabla'))}>Lista</Button>
+            <Button className="navbar-button" onClick={() => redirect(route('tabla'))}>Convenio</Button>
             <Button className="navbar-button" onClick={() => redirect(route('alumnosLista'))}>Alumnos</Button>
             <Button className="navbar-button" onClick={() => redirect(route('empresas'))}>Empresas</Button>
             <Button className="navbar-button" onClick={() => redirect(route('notas'))}>Notas</Button>
