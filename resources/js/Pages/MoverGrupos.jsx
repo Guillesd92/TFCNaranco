@@ -224,7 +224,7 @@ const MoverAlumnos = () => {
                   </Button>
                 </Grid>
 
-                  <Grid item xs={12} md={5}  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <Grid item xs={12} md={5}  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <Typography variant="subtitle1" align="center" style={{ marginRight: '1em' }}>Promocion</Typography>
                     <Select
                       label="Nuevo grupo"

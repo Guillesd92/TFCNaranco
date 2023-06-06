@@ -5,6 +5,8 @@ import theme from './../Components/theme';
 import { useState, useEffect, useRef} from 'react';
 import GroupForm from './../Components/GroupForm';
 import { Alert } from '@material-ui/lab';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Grupos = () => {
 
@@ -122,7 +124,7 @@ const Grupos = () => {
                                 <TableCell>{grupo.Curso}</TableCell>
                                 <TableCell>{getNombreEstudio(grupo.Id_Estudio)}</TableCell>
                                 <TableCell> 
-                                    <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white'}} onClick={() => handleDeleteGrupo(grupo.Id_Grupo)}>Borrar</Button> 
+                                    <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white', padding:"10px"}} onClick={() => handleDeleteGrupo(grupo.Id_Grupo)}><FontAwesomeIcon icon={faTrash} /></Button> 
                                 </TableCell>
                             </TableRow>
                         ))}

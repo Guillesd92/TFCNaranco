@@ -5,6 +5,7 @@ import theme from './../Components/theme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect, useRef} from 'react';
 import AlumnoForm from './../Components/AlumnoForm';
 import { Alert } from '@material-ui/lab';
@@ -280,7 +281,7 @@ const Alumnos = () => {
                             <TableCell>{alumno.Apellidos}</TableCell>
                             <TableCell>{alumno.Email}</TableCell>
                             <TableCell> 
-                                <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white'}}  onClick={() => handleDeleteAlumno(alumno.Id_Alumno, alumno.Email)}>Borrar</Button>
+                                <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white', padding:"10px"}}  onClick={() => handleDeleteAlumno(alumno.Id_Alumno, alumno.Email)}> <FontAwesomeIcon icon={faTrash} /></Button>
                             </TableCell>
                             </TableRow>
                         ))}

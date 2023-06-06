@@ -57,6 +57,11 @@ class RoutesController extends Controller
         return Inertia::render('MoverGrupos');
     }
 
+    public function error()
+    {
+        return Inertia::render('error');
+    }
+
     public function inicio()
     {
         return Inertia::render('Welcome');

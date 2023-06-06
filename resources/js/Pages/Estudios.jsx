@@ -4,7 +4,9 @@ import { Grid, Button, Table, TableHead, TableRow, TableCell, TableBody } from '
 import theme from './../Components/theme';
 import { useState, useEffect, useRef} from 'react';
 import EstudioForm from './../Components/EstudioForm';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Alert } from '@material-ui/lab';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Estudios = () => {
 
@@ -88,7 +90,7 @@ const Estudios = () => {
                             <TableRow key={estudio.Id_Estudio}>
                                 <TableCell>{estudio.Nombre}</TableCell>
                                 <TableCell> 
-                                    <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white'}} onClick={() => handleDeleteEstudio(estudio.Id_Estudio)}>Borrar</Button> 
+                                    <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white', padding:"10px"}} onClick={() => handleDeleteEstudio(estudio.Id_Estudio)}><FontAwesomeIcon icon={faTrash} /></Button> 
                                 </TableCell>
                             </TableRow>
                         ))}

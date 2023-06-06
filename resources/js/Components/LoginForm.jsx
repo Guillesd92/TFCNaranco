@@ -11,6 +11,8 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   
   const [error, setError] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isUser, setIsUser] = useState(false);
   
 
   const handleEmailChange = (event) => {
@@ -39,8 +41,10 @@ const LoginForm = () => {
       
       if (response.ok) {
         if (data.isAdmin) {
+          setIsAdmin(true);
           window.location.replace(route('home'));
         }else{
+          setIsUser(true);
           window.location.replace(route('tabla'));
         }
         
