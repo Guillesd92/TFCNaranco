@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBarUser from '../Components/NavBarUser';
-import { Grid, TextField, Button, Typography, Table, TableHead, TableRow, TableCell, TableBody,  Select, MenuItem} from '@material-ui/core';
+import { Grid, TextField, Button, Typography,TableContainer, Table, TableHead, TableRow, TableCell, TableBody,  Select, MenuItem} from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import theme from './../Components/theme';
 import { useState, useEffect} from 'react';
@@ -241,29 +241,31 @@ const AlumnosLista = () => {
                 </Grid>
                 
                 <Grid>
-                  <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Nombre</TableCell>
-                            <TableCell>Empresa</TableCell>
-                            <TableCell>Curso</TableCell>
-                            <TableCell>Detalles</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                    {alumnos.map((alumno) => (
-                            <TableRow key={alumno.Id_Alumno}>
-                              <TableCell>{alumno.Nombre}</TableCell>
-                              <TableCell>{devolverEmpresa(alumno.CIF)}</TableCell>
-                              <TableCell>{alumno.Año}</TableCell>
-                             
-                              <TableCell>
-                                <Button  variant="contained" color="primary"  onClick={() => handleOpen(alumno)}>Ver más</Button>
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                    </TableBody>
-                  </Table>
+                  <TableContainer style={{ maxHeight: '400px' }}>
+                    <Table>
+                      <TableHead>
+                          <TableRow>
+                              <TableCell>Nombre</TableCell>
+                              <TableCell>Empresa</TableCell>
+                              <TableCell>Curso</TableCell>
+                              <TableCell>Detalles</TableCell>
+                          </TableRow>
+                      </TableHead>
+                      <TableBody>
+                      {alumnos.map((alumno) => (
+                              <TableRow key={alumno.Id_Alumno}>
+                                <TableCell>{alumno.Nombre}</TableCell>
+                                <TableCell>{devolverEmpresa(alumno.CIF)}</TableCell>
+                                <TableCell>{alumno.Año}</TableCell>
+                              
+                                <TableCell>
+                                  <Button  variant="contained" color="primary"  onClick={() => handleOpen(alumno)}>Ver más</Button>
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
                 </Grid>
               </Grid>
             </Grid>

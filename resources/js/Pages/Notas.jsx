@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBarUser from '../Components/NavBarUser';
-import { Grid, Button, Table, TableHead, TableRow, TableCell, TableBody, Typography, TextField } from '@material-ui/core';
+import { Grid, Button,TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Typography, TextField } from '@material-ui/core';
 import theme from './../Components/theme';
 import { useState, useEffect, useRef} from 'react';
 import EmpresaForm from './../Components/EmpresaForm';
@@ -9,6 +9,7 @@ import { Alert } from '@material-ui/lab';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 const Notas = () => {
 
@@ -92,7 +93,7 @@ const Notas = () => {
     
     return (
         <div>
-        <Grid style={{ minHeight: '100vh', backgroundColor: theme.palette.azulOscuro.color }}>
+        <Grid item xs={12}  style={{ minHeight: '100vh', backgroundColor: theme.palette.azulOscuro.color }}>
           <NavBarUser />
           <Grid style={{display:'flex', justifyContent:'center', paddingTop:'3em', paddingBottom:'3em'}}>
             <Grid item xs={11}  style={{backgroundColor: theme.palette.azul.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color}}>
@@ -151,14 +152,15 @@ const Notas = () => {
                 </Grid>
                 <Grid style={{paddingTop:'1em', paddingBottom:'3em'}}>
                   <Alert id="alerta" severity="success" style={{display:'none', marginTop:'10px', marginBottom:'10px'}}>{alerta}</Alert>
+                  <TableContainer style={{ maxHeight: '400px' }}>
                   <Table>
                     <TableHead>
                       <TableRow>
                         <TableCell>CIF</TableCell>
                         <TableCell>Convenio</TableCell>
                         <TableCell>Nombre</TableCell>
-                        <TableCell>Accion</TableCell>
                         <TableCell>Tutor</TableCell>
+                        <TableCell>Accion</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -169,12 +171,13 @@ const Notas = () => {
                           <TableCell>{empresa.Nombre}</TableCell>
                           <TableCell>{empresa.Tutor}</TableCell>
                           <TableCell> 
-                            <Button variant="contained" color="primary" onClick={() => editarNotas(empresa)}>Editar Notas</Button>
+                            <Button variant="contained" color="primary" style={{padding:"10px"}} onClick={() => editarNotas(empresa)}><FontAwesomeIcon icon={faEdit} /></Button>
                           </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
                   </Table>
+               </TableContainer>
                 </Grid>
             </Grid>
           </Grid>

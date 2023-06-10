@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBarra from '../Components/NavBarra';
-import { Grid, TextField, Button, Typography, Table, TableHead, TableRow, TableCell, TableBody,  Select, MenuItem, Checkbox} from '@material-ui/core';
+import { Grid, TextField, Button, Typography,TableContainer, Table, TableHead, TableRow, TableCell, TableBody,  Select, MenuItem, Checkbox} from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import theme from './../Components/theme';
 import { useState, useEffect} from 'react';
@@ -197,10 +197,14 @@ const MoverAlumnos = () => {
             <Grid style={{display:'flex', justifyContent:'center', paddingTop:'3em', paddingBottom:'3em'}}>
               <Grid item xs={11} style={{backgroundColor: theme.palette.azul.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color}}>
                
+              <Grid style={{marginBottom: '2em'}}>
+                  <Typography variant="h4" align="center" >Promocionar Alumnos</Typography>
+                </Grid>
+
                 <Grid container  style={{ display: 'flex', justifyContent: 'space-evenly', backgroundColor: theme.palette.celeste.color, padding:'2em', border:'1px solid', borderRadius: '10px', borderColor:theme.palette.blanco.color, marginBottom:'2em'}}>
                   
                 <Grid item xs={12} md={5}  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                  <Typography variant="subtitle1" align="center" style={{ marginRight: '1em' }}>Alumnos</Typography>
+                  <Typography variant="subtitle2" align="center" style={{ marginRight: '1em' }}>Alumnos</Typography>
                   
                   <Select
                     label="Grupo"
@@ -209,7 +213,7 @@ const MoverAlumnos = () => {
                       setFiltroGrupo(e.target.value);
                     }}
                     variant="outlined"
-                    style={{ width: '90%'}}
+                    style={{ width: '90%', marginLeft:"10px"}}
                   >
                     <MenuItem value="">Todos</MenuItem>
                     {grupos.map((grupo) => (
@@ -225,7 +229,7 @@ const MoverAlumnos = () => {
                 </Grid>
 
                   <Grid item xs={12} md={5}  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                    <Typography variant="subtitle1" align="center" style={{ marginRight: '1em' }}>Promocion</Typography>
+                    <Typography variant="subtitle2" align="center" style={{ marginRight: '1em' }}>Promocion</Typography>
                     <Select
                       label="Nuevo grupo"
                       value={nuevoGrupo}
@@ -250,6 +254,7 @@ const MoverAlumnos = () => {
                 </Grid>
                 <Alert id="alerta" severity={severity} style={{display:'none', marginBottom:'30px'}}>{alerta}</Alert>
                 <Grid>
+                <TableContainer style={{ maxHeight: '400px' }}>
                   <Table>
                     <TableHead>
                         <TableRow>
@@ -276,6 +281,7 @@ const MoverAlumnos = () => {
                           ))}
                     </TableBody>
                   </Table>
+                  </TableContainer>
                 </Grid>
               </Grid>
             </Grid>

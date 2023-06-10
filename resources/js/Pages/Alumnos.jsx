@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBarra from '../Components/NavBarra';
-import { Grid, TextField, Button, Typography, Table, TableHead, TableRow, TableCell, TableBody,  Select, MenuItem} from '@material-ui/core';
+import { Grid, TextField, Button, Typography,TableContainer, Table, TableHead, TableRow, TableCell, TableBody,  Select, MenuItem} from '@material-ui/core';
 import theme from './../Components/theme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
@@ -265,6 +265,7 @@ const Alumnos = () => {
               {showList ? (
                 <Grid style={{paddingTop:'3em', paddingBottom:'3em'}}>
                   <Alert id="alerta" severity="success" style={{display:'none', marginTop:'10px', marginBottom:'10px'}}>{alerta}</Alert>
+                  <TableContainer style={{ maxHeight: '400px' }}>
                     <Table>
                         <TableHead>
                             <TableRow>
@@ -287,6 +288,7 @@ const Alumnos = () => {
                         ))}
                         </TableBody>
                     </Table>
+                    </TableContainer>
                 </Grid>
               ) : (
                 <AlumnoForm/>

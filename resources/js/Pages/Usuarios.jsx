@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBarra from '../Components/NavBarra';
-import { Grid, Button, Table, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
+import { Grid, Button,TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
 import theme from './../Components/theme';
 import { useState, useEffect, useRef} from 'react';
 import UserForm from './../Components/UserForm';
@@ -78,6 +78,7 @@ const Usuarios = () => {
               {showList ? (
                 <Grid style={{paddingTop:'3em', paddingBottom:'3em'}}>
                   <Alert id="alerta" severity="success" style={{display:'none', marginTop:'10px', marginBottom:'10px'}}>{alerta}</Alert>
+                  <TableContainer style={{ maxHeight: '400px' }}>
                     <Table>
                         <TableHead>
                             <TableRow>
@@ -102,6 +103,7 @@ const Usuarios = () => {
                         ))}
                         </TableBody>
                     </Table>
+                    </TableContainer>
                 </Grid>
               ) : (
                 <UserForm/>

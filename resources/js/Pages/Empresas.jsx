@@ -6,6 +6,9 @@ import { useState, useEffect, useRef} from 'react';
 import EmpresaForm from './../Components/EmpresaForm';
 import ModEmpresaForm from './../Components/ModEmpresaForm';
 import { Alert } from '@material-ui/lab';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 const Empresas = () => {
 
@@ -107,8 +110,8 @@ const Empresas = () => {
                             <TableCell>{empresa.Convenio}</TableCell>
                             <TableCell>{empresa.Nombre}</TableCell>
                             <TableCell> 
-                              <Button variant="contained" onClick={() => handleDeleteUser(empresa.CIF, empresa.Nombre)} style={{backgroundColor: '#ff4d4d', color: 'white', marginRight: '15px'}}>Borrar</Button>
-                              <Button variant="contained" color="primary" onClick={() => handleShowMod(empresa.CIF)}>Modificar</Button>
+                              <Button variant="contained" onClick={() => handleDeleteUser(empresa.CIF, empresa.Nombre)} style={{backgroundColor: '#ff4d4d', color: 'white', marginRight: '15px', padding:"10px"}}><FontAwesomeIcon icon={faTrash}/></Button>
+                              <Button variant="contained" color="primary" style={{padding:"10px"}} onClick={() => handleShowMod(empresa.CIF)}><FontAwesomeIcon icon={faEdit} /></Button>
                             </TableCell>
                           </TableRow>
                         ))}

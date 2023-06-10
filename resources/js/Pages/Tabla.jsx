@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBarUser from '../Components/NavBarUser';
-import { Grid, TextField, Button, Typography, Table, TableHead, TableRow, TableCell, TableBody} from '@material-ui/core';
+import { Grid,TableContainer, TextField, Button, Typography, Table, TableHead, TableRow, TableCell, TableBody} from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import theme from './../Components/theme';
 import { useState, useEffect} from 'react';
@@ -248,6 +248,7 @@ const Tabla = () => {
                 </Grid>
                 
                 <Grid style={{paddingTop:'1em', paddingBottom:'3em'}}>
+                <TableContainer style={{ maxHeight: '400px' }}>
                   <Table>
                     <TableHead>
                         <TableRow>
@@ -265,8 +266,8 @@ const Tabla = () => {
     
                               <TableCell>{devolverAlumnos(empresa.CIF)}</TableCell>
                               <TableCell>
-                                <Button  variant="contained" color="primary"   onClick={() => handleOpen(empresa, 'asignar')}><FontAwesomeIcon icon={faPlus} /></Button>
-                                <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white', marginRight: '15px'}} onClick={() => handleOpen(empresa, 'borrar')}><FontAwesomeIcon icon={faTrash} /></Button>
+                                <Button  variant="contained" color="primary" style={{padding:"10px", marginRight:"5px"}}   onClick={() => handleOpen(empresa, 'asignar')}><FontAwesomeIcon icon={faPlus} /></Button>
+                                <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white',padding:"10px"}} onClick={() => handleOpen(empresa, 'borrar')}><FontAwesomeIcon icon={faTrash} /></Button>
                               </TableCell>
                               <TableCell>
                                 <Button  variant="contained" color="primary"   onClick={() => handleOpen(empresa, 'detalles')}>Ver más</Button>
@@ -276,6 +277,7 @@ const Tabla = () => {
                           ))}
                     </TableBody>
                   </Table>
+                  </TableContainer>
                 </Grid>
               </Grid>
             </Grid>
