@@ -125,7 +125,10 @@ const Grupos = () => {
                                 <TableCell>{grupo.Curso}</TableCell>
                                 <TableCell>{getNombreEstudio(grupo.Id_Estudio)}</TableCell>
                                 <TableCell> 
+                                {grupo.Aula !== 0 &&
                                     <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white', padding:"10px"}} onClick={() => handleDeleteGrupo(grupo.Id_Grupo)}><FontAwesomeIcon icon={faTrash} /></Button> 
+                                }
+                                    
                                 </TableCell>
                             </TableRow>
                         ))}

@@ -47,7 +47,7 @@ const MoverAlumnos = () => {
     
     const formData = new FormData();
     
-    formData.append('filtroGrupo', filtroGrupo !== "" ? parseInt(filtroGrupo) : 0);
+    formData.append('filtroGrupo', filtroGrupo !== "Todos" ? parseInt(filtroGrupo) : 0);
    console.log(filtroGrupo);
 
     const response = await fetch('http://127.0.0.1:8000/api/alumnosFiltro', {
@@ -76,9 +76,13 @@ const MoverAlumnos = () => {
 
       if (grupo && grupo.Id_Estudio) {
   
-        const nombreEmpresa = devolverEstudios(grupo.Id_Estudio);
-
-        return grupo.Curso+" "+nombreEmpresa;
+        const nombreEstudio = devolverEstudios(grupo.Id_Estudio);
+        if(grupo.Curso!=0){
+          return grupo.Curso+" "+nombreEstudio;
+        }else{
+          return nombreEstudio;
+        }
+        
       }
     
     }else{
@@ -215,10 +219,14 @@ const MoverAlumnos = () => {
                     variant="outlined"
                     style={{ width: '90%', marginLeft:"10px"}}
                   >
-                    <MenuItem value="">Todos</MenuItem>
+                    <MenuItem value="Todos">Todos</MenuItem>
                     {grupos.map((grupo) => (
                       <MenuItem key={grupo.Id_Grupo} value={grupo.Id_Grupo}>
-                        {grupo.Curso} {devolverEstudios(grupo.Id_Estudio)}
+                         {grupo.Curso === 0 ? devolverEstudios(grupo.Id_Estudio) : (
+                           <>
+                            {grupo.Curso} {devolverEstudios(grupo.Id_Estudio)}
+                          </>
+                            )}
                       </MenuItem>
                     ))}
                   </Select>
@@ -242,7 +250,12 @@ const MoverAlumnos = () => {
                       <MenuItem value="">Vacio</MenuItem>
                       {grupos.map((grupo) => (
                         <MenuItem key={grupo.Id_Grupo} value={grupo.Id_Grupo}>
-                          {grupo.Curso} {devolverEstudios(grupo.Id_Estudio)}
+                          
+                          {grupo.Curso === 0 ? devolverEstudios(grupo.Id_Estudio) : (
+                           <>
+                            {grupo.Curso} {devolverEstudios(grupo.Id_Estudio)}
+                          </>
+                            )}
                         </MenuItem>
                       ))}
                     </Select>

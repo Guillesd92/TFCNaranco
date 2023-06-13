@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::get('/inicio', [RoutesController::class, 'inicio'])->name('inicio');
 Route::get('/error', [RoutesController::class, 'error'])->name('error');
 
-
+//Route::middleware('auth')->group(function () {
     Route::get('/home', [RoutesController::class, 'home'])->name('home');
     Route::get('/usuarios', [RoutesController::class, 'usuarios'])->name('usuarios');
     Route::get('/grupos', [RoutesController::class, 'grupos'])->name('grupos');
@@ -36,6 +36,7 @@ Route::get('/error', [RoutesController::class, 'error'])->name('error');
     Route::get('/notas', [RoutesController::class, 'notas'])->name('notas');
     Route::get('/alumnosLista', [RoutesController::class, 'alumnosLista'])->name('alumnosLista');
     Route::get('/moverGrupos', [RoutesController::class, 'moverGrupos'])->name('moverGrupos');
+//});
 
     Route::fallback(function () {
         if (Auth::check()) {

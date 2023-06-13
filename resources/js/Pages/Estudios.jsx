@@ -90,7 +90,10 @@ const Estudios = () => {
                             <TableRow key={estudio.Id_Estudio}>
                                 <TableCell>{estudio.Nombre}</TableCell>
                                 <TableCell> 
-                                    <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white', padding:"10px"}} onClick={() => handleDeleteEstudio(estudio.Id_Estudio)}><FontAwesomeIcon icon={faTrash} /></Button> 
+                                  {estudio.Nombre !== "Curso acabado" &&
+                                      <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white', padding:"10px"}} onClick={() => handleDeleteEstudio(estudio.Id_Estudio)}><FontAwesomeIcon icon={faTrash} /></Button> 
+                                  }
+                                    
                                 </TableCell>
                             </TableRow>
                         ))}
