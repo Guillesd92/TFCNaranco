@@ -149,6 +149,7 @@ const Tabla = () => {
             type="checkbox"
             value={alumno.id}
             onChange={() => handleAlumnoCheckbox(alumno.Id_Alumno)}
+            style={{marginRight:"10px"}}
           />
           {alumno.Nombre} {alumno.Apellidos}
         </label>
@@ -282,7 +283,7 @@ const Tabla = () => {
               </Grid>
             </Grid>
             {showForm && (
-              <Grid container item xs={6} className="overlay" style={{backgroundColor: theme.palette.azulClaro.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color,  position: "fixed",top: "50%",left: "50%",transform: "translate(-50%, -50%)"}}>
+              <Grid container item xs={6} className="overlay" style={{backgroundColor: theme.palette.azulClaro.color, padding:'2em', border:'2px solid black', borderRadius: '10px',  position: "fixed",top: "50%",left: "50%",transform: "translate(-50%, -50%)"}}>
                             
                 <Grid item xs={12}>
                 <Autocomplete
@@ -299,8 +300,7 @@ const Tabla = () => {
               </Grid>
             )}
             {showFormDelete && (
-              <Grid container item xs={6} className="overlay" style={{backgroundColor: theme.palette.azulClaro.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color,  position: "fixed",top: "50%",left: "50%",transform: "translate(-50%, -50%)" }}>
-                            
+              <Grid container item xs={6} className="overlay" style={{backgroundColor: theme.palette.azulClaro.color, padding:'2em', border:'2px solid black', borderRadius: '10px', position: "fixed",top: "50%",left: "50%",transform: "translate(-50%, -50%)" }}>           
                 <Grid item xs={12}>
                   {devolverAlumnosConCheckbox(cifEmpresaSeleccionada)}
                 
@@ -313,10 +313,10 @@ const Tabla = () => {
               </Grid>
             )}
             {showDetails && (
-              <Grid container item xs={10} sm={8} className="overlay" style={{backgroundColor: theme.palette.azulClaro.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color,  position: "fixed",top: "50%",left: "50%",transform: "translate(-50%, -50%)",zIndex: 9999 }}>
+              <Grid container item xs={10} sm={8} className="overlay" style={{backgroundColor: theme.palette.celeste.color, padding:'2em', border:'2px solid black', borderRadius: '10px',  position: "fixed",top: "50%",left: "50%",transform: "translate(-50%, -50%)",zIndex: 9999 }}>
                             
                 <Grid item xs={12}>
-
+               
                   <Grid container direction="row" style={{ backgroundColor: theme.palette.azul.color, border: '2px solid', borderRadius: '10px', borderColor: theme.palette.celeste.color }}>
                       
                       <Grid item xs={12} style={{ marginTop:'15px', marginBottom:'15px' }}>
@@ -358,10 +358,8 @@ const Tabla = () => {
                           {empresaDetalles.Notas ? <Typography variant="h6" align="center">{empresaDetalles.Notas}</Typography> : <Typography variant="h6" align="center" style={{ fontStyle: 'italic' }}>No hay notas</Typography>}
                       </Grid>
         
-                
-                    
                     </Grid>
-              
+          
                 </Grid>
 
 

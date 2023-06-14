@@ -229,11 +229,11 @@ const AlumnosLista = () => {
                   </Select>
                   </Grid>
 
-                  <Grid item xs={12} sm={12} md={2} style={{display:'flex', alignItems:'center',  justifyContent:'center'}}>
-                  <Button variant="contained" color="primary" onClick={fetchAlumnosFiltro}>
+                  <Grid item xs={12} sm={12} md={2} style={{display:'flex', alignItems:'center',  justifyContent:'space-evenly'}}>
+                  <Button variant="contained" color="primary" onClick={fetchAlumnosFiltro} style={{padding:'1em', marginRigth:"10px"}}>
                   <FontAwesomeIcon icon={faSearch} />
                     </Button>
-                    <Button variant="contained" color="primary" onClick={Restablecer}>
+                    <Button variant="contained" color="primary" onClick={Restablecer} style={{padding:'1em'}}>
                     <FontAwesomeIcon icon={faSync} />
                     </Button>
 
