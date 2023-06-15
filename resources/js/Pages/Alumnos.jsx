@@ -269,19 +269,19 @@ const Alumnos = () => {
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell>Nombre</TableCell>
-                                <TableCell>Apellido</TableCell>
-                                <TableCell>Email</TableCell>
-                                <TableCell>Accion</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Nombre</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Apellido</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Email</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Accion</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                         {alumnos.map((alumno) => (
                             <TableRow key={alumno.Id_Alumno}>
-                            <TableCell>{alumno.Nombre}</TableCell>
-                            <TableCell>{alumno.Apellidos}</TableCell>
-                            <TableCell>{alumno.Email}</TableCell>
-                            <TableCell> 
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>{alumno.Nombre}</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>{alumno.Apellidos}</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>{alumno.Email}</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}> 
                                 <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white', padding:"10px"}}  onClick={() => handleDeleteAlumno(alumno.Id_Alumno, alumno.Email)}> <FontAwesomeIcon icon={faTrash} /></Button>
                             </TableCell>
                             </TableRow>

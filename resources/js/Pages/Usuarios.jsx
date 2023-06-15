@@ -82,19 +82,19 @@ const Usuarios = () => {
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell>Nombre</TableCell>
-                                <TableCell>Apellido</TableCell>
-                                <TableCell>Email</TableCell>
-                                <TableCell>Accion</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Nombre</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Apellido</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Email</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Accion</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                         {usuarios.map((usuario) => (
                             <TableRow key={usuario.Id_Profesor}>
-                            <TableCell>{usuario.Nombre}</TableCell>
-                            <TableCell>{usuario.Apellidos}</TableCell>
-                            <TableCell>{usuario.Email}</TableCell>
-                            <TableCell> 
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>{usuario.Nombre}</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>{usuario.Apellidos}</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>{usuario.Email}</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}> 
                                 {usuario.Id_Profesor !== 1 &&
                                     <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white', padding:"10px"}} onClick={() => handleDeleteUser(usuario.Id_Profesor, usuario.Email)}><FontAwesomeIcon icon={faTrash} /></Button>
                                 }

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef} from 'react';
 import { TextField, Button, Select, MenuItem, InputLabel } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
+import "./../../css/tipografia.css";
 
 const EstudioForm = () => {
 

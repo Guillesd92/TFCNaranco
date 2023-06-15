@@ -43,7 +43,7 @@ const NavBarUser = () => {
         {showLogoutModal && (
         <Grid container item xs={9} sm={6} md={4} lg={3} className="logout-modal"  style={{position: "fixed",top: "50%",left: "50%",transform: "translate(-50%, -50%)",backgroundColor: theme.palette.blanco.color,padding: "2em",border: "2px solid black",borderRadius: "5px",color: "#ffffff",zIndex: "9999"}}>
           <Grid item xs={12} style={{display:"flex",flexDirection:"column", justifyContent:"center",  alignItems: "center",}}>
-            <Typography variant="h5"  style={{ color: 'black'}} align="center">¡Te has deslogueado!</Typography>
+            <Typography variant="h5"  style={{ color: 'black', fontFamily: 'Lexend Deca'}} align="center">¡Te has deslogueado!</Typography>
             <Button variant="contained" onClick={() => redirect(route('inicio'))} style={{backgroundColor: '#ff4d4d', color: 'white', width:"50%", marginTop:"1em"}}>Aceptar</Button>
           </Grid>
         </Grid>

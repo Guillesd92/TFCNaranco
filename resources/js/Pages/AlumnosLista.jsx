@@ -245,20 +245,20 @@ const AlumnosLista = () => {
                     <Table>
                       <TableHead>
                           <TableRow>
-                              <TableCell>Nombre</TableCell>
-                              <TableCell>Empresa</TableCell>
-                              <TableCell>Curso</TableCell>
-                              <TableCell>Detalles</TableCell>
+                              <TableCell style={{fontFamily: 'Lexend Deca'}}>Nombre</TableCell>
+                              <TableCell style={{fontFamily: 'Lexend Deca'}}>Empresa</TableCell>
+                              <TableCell style={{fontFamily: 'Lexend Deca'}}>Curso</TableCell>
+                              <TableCell style={{fontFamily: 'Lexend Deca'}}>Detalles</TableCell>
                           </TableRow>
                       </TableHead>
                       <TableBody>
                       {alumnos.map((alumno) => (
                               <TableRow key={alumno.Id_Alumno}>
-                                <TableCell>{alumno.Nombre}</TableCell>
-                                <TableCell>{devolverEmpresa(alumno.CIF)}</TableCell>
-                                <TableCell>{alumno.Año}</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>{alumno.Nombre}</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>{devolverEmpresa(alumno.CIF)}</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>{alumno.Año}</TableCell>
                               
-                                <TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>
                                   <Button  variant="contained" color="primary"  onClick={() => handleOpen(alumno)}>Ver más</Button>
                                 </TableCell>
                               </TableRow>

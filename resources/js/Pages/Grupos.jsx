@@ -112,18 +112,18 @@ const Grupos = () => {
                         <TableHead>
                             <TableRow>
                               
-                                <TableCell>Aula</TableCell>
-                                <TableCell>Curso</TableCell>
-                                <TableCell>Estudio</TableCell>
-                                <TableCell>Accion</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Aula</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Curso</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Estudio</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Accion</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                         {grupos.map((grupo) => (
                             <TableRow key={grupo.Id_Grupo}>
-                                <TableCell>{grupo.Aula}</TableCell>
-                                <TableCell>{grupo.Curso}</TableCell>
-                                <TableCell>{getNombreEstudio(grupo.Id_Estudio)}</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>{grupo.Aula}</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>{grupo.Curso}</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>{getNombreEstudio(grupo.Id_Estudio)}</TableCell>
                                 <TableCell> 
                                 {grupo.Aula !== 0 &&
                                     <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white', padding:"10px"}} onClick={() => handleDeleteGrupo(grupo.Id_Grupo)}><FontAwesomeIcon icon={faTrash} /></Button> 

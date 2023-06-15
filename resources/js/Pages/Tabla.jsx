@@ -196,7 +196,7 @@ const Tabla = () => {
               <Grid item xs={11} style={{backgroundColor: theme.palette.azul.color, padding:'2em', border:'2px solid', borderRadius: '10px', borderColor:theme.palette.celeste.color}}>
 
                 <Grid style={{marginBottom: '2em'}}>
-                  <Typography variant="h4" align="center" >Listado de Convenios</Typography>
+                  <Typography variant="h4" align="center"  >Listado de Convenios</Typography>
                 </Grid>
 
                 <Grid container  style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: theme.palette.celeste.color, padding:'2em', border:'1px solid', borderRadius: '10px', borderColor:theme.palette.blanco.color, marginBottom:'2em'}}>
@@ -253,24 +253,24 @@ const Tabla = () => {
                   <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Nombre</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>Nombre</TableCell>
                             
-                            <TableCell>Alumnos</TableCell>
-                            <TableCell>Asignar</TableCell>
-                            <TableCell>Detalles</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>Alumnos</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>Asignar</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>Detalles</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                     {empresas.map((empresa) => (
                             <TableRow key={empresa.CIF}>
-                              <TableCell>{empresa.Nombre}</TableCell>
+                              <TableCell style={{fontFamily: 'Lexend Deca'}}>{empresa.Nombre}</TableCell>
     
-                              <TableCell>{devolverAlumnos(empresa.CIF)}</TableCell>
-                              <TableCell>
+                              <TableCell style={{fontFamily: 'Lexend Deca'}}>{devolverAlumnos(empresa.CIF)}</TableCell>
+                              <TableCell style={{fontFamily: 'Lexend Deca'}}>
                                 <Button  variant="contained" color="primary" style={{padding:"10px", marginRight:"5px"}}   onClick={() => handleOpen(empresa, 'asignar')}><FontAwesomeIcon icon={faPlus} /></Button>
                                 <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white',padding:"10px"}} onClick={() => handleOpen(empresa, 'borrar')}><FontAwesomeIcon icon={faTrash} /></Button>
                               </TableCell>
-                              <TableCell>
+                              <TableCell style={{fontFamily: 'Lexend Deca'}}>
                                 <Button  variant="contained" color="primary"   onClick={() => handleOpen(empresa, 'detalles')}>Ver más</Button>
                                 
                               </TableCell>

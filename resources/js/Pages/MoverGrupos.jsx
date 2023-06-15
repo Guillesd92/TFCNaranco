@@ -271,18 +271,18 @@ const MoverAlumnos = () => {
                   <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Nombre</TableCell>
-                            <TableCell>Apellidos</TableCell>
-                            <TableCell>Grupo</TableCell>
-                            <TableCell>Accion</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>Nombre</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>Apellidos</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>Grupo</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>Accion</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                     {alumnos.map((alumno) => (
                             <TableRow key={alumno.Id_Alumno}>
-                              <TableCell>{alumno.Nombre}</TableCell>
-                              <TableCell>{alumno.Apellidos}</TableCell>
-                              <TableCell>{devolverCursoEstudio(alumno.Id_Grupo)}</TableCell>
+                              <TableCell style={{fontFamily: 'Lexend Deca'}}>{alumno.Nombre}</TableCell>
+                              <TableCell style={{fontFamily: 'Lexend Deca'}}>{alumno.Apellidos}</TableCell>
+                              <TableCell style={{fontFamily: 'Lexend Deca'}}>{devolverCursoEstudio(alumno.Id_Grupo)}</TableCell>
                              
                               <TableCell>
                                 <Checkbox

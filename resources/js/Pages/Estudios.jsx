@@ -8,6 +8,8 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Alert } from '@material-ui/lab';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import "./../../css/tipografia.css";
+
 const Estudios = () => {
 
     const [showList, setShowList] = useState(true);
@@ -81,15 +83,15 @@ const Estudios = () => {
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell>Nombre</TableCell> 
-                                <TableCell>Accion</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Nombre</TableCell> 
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>Accion</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                         {estudios.map((estudio) => (
                             <TableRow key={estudio.Id_Estudio}>
-                                <TableCell>{estudio.Nombre}</TableCell>
-                                <TableCell> 
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}>{estudio.Nombre}</TableCell>
+                                <TableCell style={{fontFamily: 'Lexend Deca'}}> 
                                   {estudio.Nombre !== "Curso acabado" &&
                                       <Button variant="contained" style={{backgroundColor: '#ff4d4d', color: 'white', padding:"10px"}} onClick={() => handleDeleteEstudio(estudio.Id_Estudio)}><FontAwesomeIcon icon={faTrash} /></Button> 
                                   }

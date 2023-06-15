@@ -156,21 +156,21 @@ const Notas = () => {
                   <Table>
                     <TableHead>
                       <TableRow>
-                        <TableCell>CIF</TableCell>
-                        <TableCell>Convenio</TableCell>
-                        <TableCell>Nombre</TableCell>
-                        <TableCell>Tutor</TableCell>
-                        <TableCell>Accion</TableCell>
+                        <TableCell style={{fontFamily: 'Lexend Deca'}}>CIF</TableCell>
+                        <TableCell style={{fontFamily: 'Lexend Deca'}}>Convenio</TableCell>
+                        <TableCell style={{fontFamily: 'Lexend Deca'}}>Nombre</TableCell>
+                        <TableCell style={{fontFamily: 'Lexend Deca'}}>Tutor</TableCell>
+                        <TableCell style={{fontFamily: 'Lexend Deca'}}>Accion</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {empresas.map((empresa) => (
                         <TableRow key={empresa.CIF}>
-                          <TableCell>{empresa.CIF}</TableCell>
-                          <TableCell>{empresa.Convenio}</TableCell>
-                          <TableCell>{empresa.Nombre}</TableCell>
-                          <TableCell>{empresa.Tutor}</TableCell>
-                          <TableCell> 
+                          <TableCell style={{fontFamily: 'Lexend Deca'}}>{empresa.CIF}</TableCell>
+                          <TableCell style={{fontFamily: 'Lexend Deca'}}>{empresa.Convenio}</TableCell>
+                          <TableCell style={{fontFamily: 'Lexend Deca'}}>{empresa.Nombre}</TableCell>
+                          <TableCell style={{fontFamily: 'Lexend Deca'}}>{empresa.Tutor}</TableCell>
+                          <TableCell style={{fontFamily: 'Lexend Deca'}}> 
                             <Button variant="contained" color="primary" style={{padding:"10px"}} onClick={() => editarNotas(empresa)}><FontAwesomeIcon icon={faEdit} /></Button>
                           </TableCell>
                         </TableRow>

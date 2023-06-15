@@ -97,19 +97,19 @@ const Empresas = () => {
                     <Table>
                       <TableHead>
                         <TableRow>
-                          <TableCell>CIF</TableCell>
-                          <TableCell>Convenio</TableCell>
-                          <TableCell>Nombre</TableCell>
-                          <TableCell>Accion</TableCell>
+                          <TableCell style={{fontFamily: 'Lexend Deca'}}>CIF</TableCell>
+                          <TableCell style={{fontFamily: 'Lexend Deca'}}>Convenio</TableCell>
+                          <TableCell style={{fontFamily: 'Lexend Deca'}}>Nombre</TableCell>
+                          <TableCell style={{fontFamily: 'Lexend Deca'}}>Accion</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
                         {empresas.map((empresa) => (
                           <TableRow key={empresa.CIF}>
-                            <TableCell>{empresa.CIF}</TableCell>
-                            <TableCell>{empresa.Convenio}</TableCell>
-                            <TableCell>{empresa.Nombre}</TableCell>
-                            <TableCell> 
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>{empresa.CIF}</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>{empresa.Convenio}</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}>{empresa.Nombre}</TableCell>
+                            <TableCell style={{fontFamily: 'Lexend Deca'}}> 
                               <Button variant="contained" onClick={() => handleDeleteUser(empresa.CIF, empresa.Nombre)} style={{backgroundColor: '#ff4d4d', color: 'white', marginRight: '15px', padding:"10px"}}><FontAwesomeIcon icon={faTrash}/></Button>
                               <Button variant="contained" color="primary" style={{padding:"10px"}} onClick={() => handleShowMod(empresa.CIF)}><FontAwesomeIcon icon={faEdit} /></Button>
                             </TableCell>
